@@ -49,12 +49,18 @@ Password
 
 ## User Stories 
 As a job seeker, I want to be able to post my availability, skills, and pay rate to look for work.
+
 As a job seeker, I want to be able to post my previous works and portfolio.
+
 As a developer, I want to be able to post my projects and look for help based on specific availability and desired skills.
+
 As a user, I want to be able to log in and create a profile to save my information to make posting easier.
+
 As a user, I want to be the only person able to edit or delete my posts.
 
 ## Stretch Goals
 As a job seeker, I want to be able to filter available jobs by skills or pay rate.
+
 As a developer, I want to be able to filter available help by skills or pay rate.
+
 As a user, I would like to automatically be emailed by the system on behalf of the developer or job seeker.
