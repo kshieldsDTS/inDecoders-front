@@ -1,4 +1,4 @@
-# inDesign
+# inDesign Front End
 
 ### Current Status:
 #### In Development
@@ -6,6 +6,10 @@
 ### About inDesign
 	
 inDesign is a job board for video game developers, coders, animators, and designers. Users looking for work can post their skills and areas of strength, as well as list their previous works, and, of course, pay rate. Project managers will also be able to post availability for work on their projects, as well as specifying the desired skills, availability, and pay rate.
+
+### This Repo:
+
+This repository serves as the basis for the inDesign's front end, utilizing React, JavaScript, and Material UI.
 
 ### Front-End:
 HTML, CSS, JavaScript, React, Material UI
