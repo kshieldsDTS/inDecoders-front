@@ -3,7 +3,7 @@ import WorkerCard from './WorkerCard';
 
 const jobPosts = [
 	{
-		id: 1,
+		id: 0,
 		name: 'Kurt',
 		skills: ['Javascript', 'Python'],
 		email: 'kurt@kurt.com',
@@ -11,7 +11,7 @@ const jobPosts = [
 		payrate: 30,
 	},
 	{
-		id: 2,
+		id: 1,
 		name: 'Bill',
 		skills: ['C#', 'Unity'],
 		email: 'bill@bill.com',
@@ -19,7 +19,7 @@ const jobPosts = [
 		payrate: 50,
 	},
 	{
-		id: 3,
+		id: 2,
 		name: 'Michel',
 		skills: ['Angular', 'Ruby'],
 		email: 'Michel@Michel.com',
