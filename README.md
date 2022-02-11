@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# inDesign Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Current Status:
+#### In Development
 
-## Available Scripts
+### About inDesign
+	
+inDesign is a job board for video game developers, coders, animators, and designers. Users looking for work can post their skills and areas of strength, as well as list their previous works, and, of course, pay rate. Project managers will also be able to post availability for work on their projects, as well as specifying the desired skills, availability, and pay rate.
 
-In the project directory, you can run:
+### This Repo:
 
-### `npm start`
+This repository serves as the basis for the inDesign's front end, utilizing React, JavaScript, and Material UI.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Front-End:
+HTML, CSS, JavaScript, React, Material UI
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Back-End:
+Python, Django, Postgres, AWS S3
 
-### `npm test`
+# Models:
+### LFW(Looking for work)
+Name (linked to LFWUsers Model)
+Contact Information (linked to Users Model)
+Skills, Languages (linked to Users Model)
+Previous Works (linked to Users Model)
+Availability
+Pay rate
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### LFH(Looking for help)
+Name (linked to Users model)
+Contact Information (linked to Users model)
+Project outline and scope
+Desired skills and languages
+Desired availability
+Pay rate
 
-### `npm run build`
+### Users
+Name 
+Contacts Information
+Skills for LFW
+Previous Works for LFW (links to deployed apps or GitHub repos)
+Password
+		
+## React Component Heirarchy
+<img width="943" alt="Screen Shot 2022-02-11 at 11 37 32 AM" src="https://user-images.githubusercontent.com/94239332/153631480-07c6fa9c-138c-47cc-b6e4-86cc3702a3cb.png">
+## Wireframes 
+<img width="300" alt="Screen Shot 2022-02-11 at 11 07 41 AM" src="https://user-images.githubusercontent.com/94239332/153628923-4c46ee20-777d-4370-8d4d-3438ec2397a4.png">
+<img width="296" alt="Screen Shot 2022-02-11 at 11 07 31 AM" src="https://user-images.githubusercontent.com/94239332/153628936-8b34ce97-ec4a-4b2e-912c-795cd82e5bce.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## User Stories 
+As a job seeker, I want to be able to post my availability, skills, and pay rate to look for work.
+As a job seeker, I want to be able to post my previous works and portfolio.
+As a developer, I want to be able to post my projects and look for help based on specific availability and desired skills.
+As a user, I want to be able to log in and create a profile to save my information to make posting easier.
+As a user, I want to be the only person able to edit or delete my posts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Stretch Goals
+As a job seeker, I want to be able to filter available jobs by skills or pay rate.
+As a developer, I want to be able to filter available help by skills or pay rate.
+As a user, I would like to automatically be emailed by the system on behalf of the developer or job seeker.
