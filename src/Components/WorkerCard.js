@@ -7,7 +7,7 @@ function WorkerCard(props) {
     }
     return (
 			<div>
-                <Link to={`/LFW/${props.id}`}>
+                <Link to={`/LFW/${props.id}`} params={'hello'}>
                     <div>
 				        <p>Name: {props.name}</p>
                         <p>Skills: {props.skills}</p>
