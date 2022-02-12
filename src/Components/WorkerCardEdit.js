@@ -30,16 +30,17 @@ const jobPosts = [
 
 function WorkerCardEdit(props) {
 	const params = useParams()
+	const id = params.id
     function testStuff() {
 			console.log(params);
 		}
     return (
 			<div>
-				<p>Name: {jobPosts[0].name}</p>
-				<p>Skills: {jobPosts[0].skills.join(' ')}</p>
-                <p>Email: {jobPosts[0].email}</p>
-                <p>Availability: {jobPosts[0].availability}</p>
-                <p>Payrate: ${jobPosts[0].payrate}/hour</p>
+				<p>Name: {jobPosts[id].name}</p>
+				<p>Skills: {jobPosts[id].skills.join(' ')}</p>
+                <p>Email: {jobPosts[id].email}</p>
+                <p>Availability: {jobPosts[id].availability}</p>
+                <p>Payrate: ${jobPosts[id].payrate}/hour</p>
 				<button onClick={testStuff}>Test The Thing</button>
 			</div>
 		);
