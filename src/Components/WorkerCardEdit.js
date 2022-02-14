@@ -20,14 +20,15 @@ function WorkerCardEdit(props) {
 	}, [id]);
     return (
 			<div>
-				{!workerData ? 'Loading user...' :
-				<div>
-				<p>Name: {workerData.owner}</p>
-				<p>Email: {workerData.email}</p>
-				<p>Skills: {workerData.skills}</p>
-				<p>Availability: {workerData.availability}</p>
-				<p>Payrate: ${workerData.payrate_desired}/hour</p>
-				</div>
+				{!workerData ? 'Loading user...' 
+					:
+					<div>
+						<p>Name: {workerData.owner}</p>
+						<p>Email: {workerData.email}</p>
+						<p>Skills: {workerData.skills}</p>
+						<p>Availability: {workerData.availability}</p>
+						<p>Payrate: ${workerData.payrate_desired}/hour</p>
+					</div>
 				}
 			</div>
 		);

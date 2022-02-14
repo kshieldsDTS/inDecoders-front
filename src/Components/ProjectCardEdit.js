@@ -1,54 +1,40 @@
 import React from 'react';
 import { useParams } from 'react-router';
-
-const projectPosts = [
-	{
-		id: 0,
-		projectName: 'AgiliTeam',
-		description: 'A Kanban Style workflow management app',
-		contacts: ['Kurt'],
-		skillsDesired: ['MongoDB', 'Express', 'Mongoose'],
-		availabilityDesired: 'M-F 9-5',
-		timeline: '1 week',
-		payRate: 30,
-	},
-	{
-		id: 1,
-		projectName: 'Felp',
-		description: 'An alternative to Yelp',
-		contacts: ['Frankz'],
-		skillsDesired: ['CSS', 'Material UI', 'Sass'],
-		availabilityDesired: 'any',
-		timeline: '1 week',
-		payRate: 35,
-	},
-	{
-		id: 2,
-		projectName: 'YogaStarz',
-		description: 'A yoga trainer on your phone to keep you focused',
-		contacts: ['George', 'Nat'],
-		skillsDesired: ['Django', 'Postgres', 'AWS', 'Python'],
-		availabilityDesired: 'Saturdays',
-		timeline: 'however long it takes',
-		payRate: 30,
-	},
-];
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ProjectCardEdit(props) {
     const params = useParams()
     const id = params.id
+	const [projectData, setProjectData] = useState();
+	useEffect(() => {
+		const url = `https://indecoders.herokuapp.com/LFHelp/${id}`;
+		(async () => {
+			try {
+				const fetchedData = await axios.get(url)
+				setProjectData(fetchedData.data)
+			} catch(err) {
+				console.error(err)
+			}
+		})()
+	})
     return (
-        <div>
-            <p>Project Name: {projectPosts[id].projectName}</p>
-			<p>Description: {projectPosts[id].description}</p>
-			<p>Contacts: {projectPosts[id].contacts.join(' ')}</p>
-			<p>Skills Desired: {projectPosts[id].skillsDesired.join(' ')}</p>
-			<p>Availability Needed: {projectPosts[id].availabilityDesired}
-			</p>
-			<p>Timeline: {projectPosts[id].timeline}</p>
-			<p>Pay Rate: ${projectPosts[id].payRate}/hour</p>
-        </div>
-    );
+			<div>
+				{projectData ? (
+					<div>
+						<p>Project Name: {projectData.project_name}</p>
+						<p>Description: {projectData.description}</p>
+						<p>Skills Desired: {projectData.skills_desired}</p>
+						<p>Availability Needed: {projectData.availability_desired}</p>
+						<p>Timeline: {projectData.timeline}</p>
+						<p>Pay Rate: ${projectData.payrate}/hour</p>
+						<p>Contact: {projectData.contact}</p>
+					</div>
+				) : (
+					'Loading project...'
+				)}
+			</div>
+		);
 }
 
 export default ProjectCardEdit;
