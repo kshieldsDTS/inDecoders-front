@@ -1,15 +1,28 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios';
+import api_url from '../apiConfig';
 
-function Login(props) {
-    const [information, setInformation] = useState({})
+function Login({ handleSetLoggedIn }) {
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState();
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
     function handleChange(ev){
-        setInformation({...information, [ev.target.id]: ev.target.value })
+        setFormData({...formData, [ev.target.id]: ev.target.value })
     }
     function submitForm(ev) {
         ev.preventDefault()
-        
+        sendData();
+    }
+    const sendData = async() => {
+        const response = await axios.post(`${api_url}token/login/`, formData)
+        console.log(response);
+        if (response.status === 200) {
+            handleSetLoggedIn(response.data.auth_token);
+            navigate('/')
+        }
     }
     return (
         <div>
@@ -17,9 +30,9 @@ function Login(props) {
                 <legend>Email:</legend>
                 <input type='text' id='email' onChange={handleChange} required></input>
                 <legend>Password:</legend>
-                <input type='text' id='password' onChange={handleChange} required></input>
+                <input type='password' id='password' onChange={handleChange} required autoComplete='auto'></input>
                 <br/>
-                <button onClick={submitForm}>Submit Form</button>
+                <button onClick={submitForm}>Submit</button>
             </form>
         </div>
     );

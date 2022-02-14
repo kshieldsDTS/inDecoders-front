@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import Nav from './Components/Nav'
 import Main from './Components/Main'
@@ -8,14 +9,28 @@ import ProjectCard from './Components/ProjectCardEdit';
 import WorkerCard from './Components/WorkerCardEdit';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
+import Logout from './Components/Logout'
 import Users from './Components/Users';
 import UserCard from './Components/UserCard'
 import About from './Components/About';
 
 function App() {
-  return (
+	const [loggedIn, setLoggedIn] = useState()
+	const [userInfo, setUserInfo] = useState(null)
+	function handleSetLoggedIn(token) {
+		localStorage.setItem('token', token)
+		setLoggedIn(true)
+	}
+	function handleLogout(){
+		return
+	}
+  	return (
 		<div className='App'>
-			<Nav />
+			<Nav 
+				loggedIn={loggedIn}
+				handleLogout={handleLogout}
+				userInfo={userInfo}	
+			/>
 			<Routes>
 				<Route path='/' element={<Main/>}/>
 				<Route path='/lfw' element={<LFW/>}/>
@@ -23,7 +38,8 @@ function App() {
 				<Route path='/lfh/:id' element={<ProjectCard />}/>
 				<Route path='/lfw/:id' element={<WorkerCard />}/>
 				<Route path='/signup' element={<SignUp />}/>
-				<Route path='/login' element={<Login/>}/>
+				<Route path='/login' element={<Login 
+					handleSetLoggedIn={handleSetLoggedIn}/>}/>
         		<Route path='/users' element={<Users/>}/>
 				<Route path='/users/:id' element={<UserCard/>}/>
 				<Route path='/about' element={<About/>}/>
