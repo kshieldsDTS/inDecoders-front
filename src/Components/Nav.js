@@ -44,21 +44,26 @@ function Nav(props) {
                 </Link>
                 <Link to='/LFW'>
                   <li className={menuOpen ? 'show-link link-two' : 'hidden-link hidden-link-two'}>
-                    <p>LFW</p>
+                    <p>Browse Job Seekers</p>
                   </li>
                 </Link>
                 <Link to='/LFH'>
                   <li className={menuOpen ? 'show-link link-three' : 'hidden-link hidden-link-three'}>
-                    <p>LFH</p>
+                    <p>Browse Projects</p>
+                  </li>
+                </Link>
+                <Link to='/users'>
+                  <li className={menuOpen ? 'show-link link-four' : 'hidden-link hidden-link-four'}>
+                    <p>Browse Users</p>
                   </li>
                 </Link>
                 <Link to='/login'>
-                  <li className={menuOpen ? 'show-link link-four' : 'hidden-link hidden-link-four'}>
+                  <li className={menuOpen ? 'show-link link-five' : 'hidden-link hidden-link-five'}>
                     <p>Login</p>
                   </li>
                 </Link>
                 <Link to='/user'>
-                  <li className={menuOpen ? 'show-link link-five' : 'hidden-link hidden-link-five'}>
+                  <li className={menuOpen ? 'show-link link-six' : 'hidden-link hidden-link-six'}>
                     <p>Profile</p>
                   </li>
                 </Link>
