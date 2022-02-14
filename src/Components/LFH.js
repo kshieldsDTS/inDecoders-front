@@ -1,60 +1,44 @@
 import React from 'react';
 import ProjectCard from './ProjectCard'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
-const projectPosts = [
-	{
-		id: 0,
-		projectName: 'AgiliTeam',
-		description: 'A Kanban Style workflow management app',
-		contacts: [
-            'Kurt',
-        ],
-		skillsDesired: ['MongoDB', 'Express', 'Mongoose'],
-		availabilityDesired: 'M-F 9-5',
-		timeline: '1 week',
-		payRate: 30,
-	},
-	{
-		id: 1,
-		projectName: 'Felp',
-		description: 'An alternative to Yelp',
-		contacts: [
-            'Frankz',
-        ],
-		skillsDesired: ['CSS', 'Material UI', 'Sass'],
-		availabilityDesired: 'any',
-		timeline: '1 week',
-		payRate: 35,
-	},
-	{
-		id: 2,
-		projectName: 'YogaStarz',
-		description: 'A yoga trainer on your phone to keep you focused',
-		contacts: [
-            'George',
-            'Nat'
-        ],
-		skillsDesired: ['Django', 'Postgres', 'AWS', 'Python'],
-		availabilityDesired: 'Saturdays',
-		timeline: 'however long it takes',
-		payRate: 30,
-	},
-];
 function LFH(props) {
+	const [fetchedProjects, setFetchedProjects] = useState()
+	useEffect(() => {
+		const url = 'https://indecoders.herokuapp.com/LFHelp/';
+		(async () => {
+			try {
+				const fetchedData = await axios.get(url)
+				setFetchedProjects(fetchedData.data)
+			} catch(err){
+				console.error(err)
+			}
+		})()
+	}, [])
     return (
 			<div>
-				{projectPosts.map((element, i) => (
-					<ProjectCard
-						key={i}
-						id={element.id}
-						projectName={element.projectName}
-						skillsDesired={element.skillsDesired}
-						contacts={element.contacts}
-						availabilityDesired={element.availabilityDesired}
-                        timeline={element.timeline}
-						payrate={element.payRate}
-					/>
-				))}
+				{fetchedProjects ? 
+					fetchedProjects.map((element, i) => (
+						<ProjectCard
+							key={i}
+							id={element.id}
+							project_name={element.project_name}
+							description={element.description}
+							skills_desired={element.skills_desired}
+							availability_desired={element.availability_desired}
+							timeline={element.timeline}
+							sunday={element.sunday}
+							monday={element.monday}
+							tuesday={element.tuesday}
+							wednesday={element.wednesday}
+							thursday={element.thursday}
+							friday={element.friday}
+							saturday={element.saturday}
+							payrate={element.payrate}
+							contact={element.contact}
+						/>
+					)) : 'Please wait... Heroku is waking up...'}
 			</div>
 		);
 }
