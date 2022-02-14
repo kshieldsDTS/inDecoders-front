@@ -2,11 +2,12 @@ import React from 'react';
 import ProjectCard from './ProjectCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import api_url from '../apiConfig';
 
 function LFH(props) {
 	const [fetchedProjects, setFetchedProjects] = useState()
 	useEffect(() => {
-		const url = 'https://indecoders.herokuapp.com/LFHelp/';
+		const url = `${api_url}LFHelp/`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)

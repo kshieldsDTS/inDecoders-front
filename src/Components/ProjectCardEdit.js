@@ -2,13 +2,14 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import api_url from '../apiConfig';
 
 function ProjectCardEdit(props) {
     const params = useParams()
     const id = params.id
 	const [projectData, setProjectData] = useState();
 	useEffect(() => {
-		const url = `https://indecoders.herokuapp.com/LFHelp/${id}`;
+		const url = `${api_url}LFHelp/${id}`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)

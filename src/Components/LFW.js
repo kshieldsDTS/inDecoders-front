@@ -2,11 +2,12 @@ import React from 'react';
 import WorkerCard from './WorkerCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import api_url from '../apiConfig';
 
 function LFW(props) {
 	const [displayData, setDisplayData] = useState()
 	useEffect(() => {
-		const url = 'https://indecoders.herokuapp.com/LFWork/';
+		const url = `${api_url}LFWork`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)

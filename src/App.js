@@ -6,6 +6,7 @@ import LFW from './Components/LFW';
 import LFH from './Components/LFH';
 import ProjectCard from './Components/ProjectCardEdit';
 import WorkerCard from './Components/WorkerCardEdit';
+import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import Users from './Components/Users';
 import UserCard from './Components/UserCard'
@@ -21,6 +22,7 @@ function App() {
 				<Route path='/lfh' element={<LFH/>}/>
 				<Route path='/lfh/:id' element={<ProjectCard />}/>
 				<Route path='/lfw/:id' element={<WorkerCard />}/>
+				<Route path='/signup' element={<SignUp />}/>
 				<Route path='/login' element={<Login/>}/>
         		<Route path='/users' element={<Users/>}/>
 				<Route path='/users/:id' element={<UserCard/>}/>

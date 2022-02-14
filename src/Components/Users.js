@@ -2,11 +2,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserCard from './UserCard'
+import api_url from '../apiConfig';
 
 function User(props) {
     const [fetchedUsers, setFetchedUsers] = useState()
     useEffect(() => {
-        const url = 'https://indecoders.herokuapp.com/getusers/';
+        const url = `${api_url}getusers`;
         (async () => {
             try {
                 const fetchedData = await axios.get(url)
