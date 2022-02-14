@@ -1,54 +1,44 @@
 import React from 'react';
 import WorkerCard from './WorkerCard';
-
-const jobPosts = [
-	{
-		id: 0,
-		name: 'Kurt',
-		skills: ['Javascript', 'Python'],
-		email: 'kurt@kurt.com',
-		availability: '9 to 5',
-		payrate: 30,
-	},
-	{
-		id: 1,
-		name: 'Bill',
-		skills: ['C#', 'Unity'],
-		email: 'bill@bill.com',
-		availability: '24 hours',
-		payrate: 50,
-	},
-	{
-		id: 2,
-		name: 'Michel',
-		skills: ['Angular', 'Ruby'],
-		email: 'Michel@Michel.com',
-		availability: 'Sundays only',
-		payrate: 40,
-	}
-];
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function LFW(props) {
-    function testStuff(){
-        console.log('hi');
-    }
+	const [displayData, setDisplayData] = useState()
+	useEffect(() => {
+		const url = 'https://indecoders.herokuapp.com/LFWork/';
+		(async () => {
+			try {
+				const fetchedData = await axios.get(url)
+				setDisplayData(fetchedData.data)
+			} catch(err){
+				console.error(err)
+			}
+		})()
+	}, [])
     return (
         <div>
-            {jobPosts.map((element, i) => (
+			{displayData ? 
+				displayData.map((element, i) => (
                 <WorkerCard
                     key={i}
                     id={element.id}
-                    name={element.name}
+                    name={element.owner}
                     skills={element.skills}
                     email={element.email}
                     availability={element.availability}
                     payrate={element.payrate}
+					sunday={element.sunday}
+					monday={element.monday}
+					tuesday={element.tuesday}
+					wednesday={element.wednesday}
+					thursday={element.thursday}
+					friday={element.friday}
+					saturday={element.saturday}
                 />
-            ))}
-            {/* <button onClick={testStuff}>Test The Thing</button> */}
+            )) : 'Please wait... Heroku is waking up...'}
         </div> 
     );
-    
 }
 
 export default LFW;
