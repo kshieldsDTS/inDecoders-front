@@ -1,14 +1,70 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Nav(props) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  function toggleMenu(){
+    setMenuOpen(!menuOpen)
+  }
     return (
-        <div>
-          <Link to='/'>Home</Link>
-          <Link to='/LFW'>LFW</Link>
-          <Link to='/LFH'>LFH</Link>
-          <Link to='/login'>Login</Link>
-          <Link to='/user'>User</Link>
+        <div className='nav-wrapper'>
+          <div className='header'>
+            <Link to='/'>
+              <h2>inDecoders</h2>
+            </Link>
+          </div>
+          <div className='menu-wrapper'>
+            <div className='menu-button' onClick={toggleMenu}>
+              <div className='line-wrap'>
+                <div className={!menuOpen ? 'line' : 'line top-left-open'}>
+                </div>
+                <div className={!menuOpen ? 'line' : 'line top-right-open'}>
+                </div>
+              </div>
+              <div className='line-wrap'>
+                <div className={!menuOpen ? 'line' : 'line middle-left-open'}>
+                </div>
+                <div className={!menuOpen ? 'line' : 'line middle-right-open'}>
+                </div>
+              </div>
+              <div className='line-wrap'>
+                <div className={!menuOpen ? 'line' : 'line bottom-left-open'}>
+                </div>
+                <div className={!menuOpen ? 'line' : 'line bottom-right-open'}>
+                </div>
+              </div>
+            </div>
+            <nav className={menuOpen ? 'menu show-menu' : 'menu hide-menu'}>
+              <ul className='link-list'>
+                <Link to='/'>
+                  <li className={menuOpen ? 'show-link link-one' : 'hidden-link hidden-link-one'}>
+                    <p>Home</p>
+                  </li>
+                </Link>
+                <Link to='/LFW'>
+                  <li className={menuOpen ? 'show-link link-two' : 'hidden-link hidden-link-two'}>
+                    <p>LFW</p>
+                  </li>
+                </Link>
+                <Link to='/LFH'>
+                  <li className={menuOpen ? 'show-link link-three' : 'hidden-link hidden-link-three'}>
+                    <p>LFH</p>
+                  </li>
+                </Link>
+                <Link to='/login'>
+                  <li className={menuOpen ? 'show-link link-four' : 'hidden-link hidden-link-four'}>
+                    <p>Login</p>
+                  </li>
+                </Link>
+                <Link to='/user'>
+                  <li className={menuOpen ? 'show-link link-five' : 'hidden-link hidden-link-five'}>
+                    <p>Profile</p>
+                  </li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
         </div>
     );
 }

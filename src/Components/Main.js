@@ -3,7 +3,7 @@ import React from 'react';
 function Main(props) {
     return (
         <div>
-            Hello from Main!
+            <h1>Welcome to inDecoders!</h1>
         </div>
     );
 }

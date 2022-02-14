@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+body,
+html {
+	text-align: center;
+	background-color: #222;
+	color: white;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+	color: white;
+	text-decoration: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Nav Bar Styling */
+.nav-wrapper {
+	background-color: #111;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header h2 {
+	margin: 20px;
+	padding: 0;
 }
-
-.App-link {
-  color: #61dafb;
+.menu-button {
+	display: flex;
+	flex-direction: column;
+	width: 30px;
+	margin: 20px;
+	opacity: 1;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.line-wrap {
+	display: flex;
+}
+.line {
+	background-color: white;
+	width: 16px;
+	height: 5px;
+	margin-bottom: 4px;
+	transition: transform 0.3s;
+}
+.top-left-open {
+	transform: rotate(45deg) translateX(5px) scaleX(1);
+}
+.top-right-open {
+	transform: rotate(-45deg) translateX(-5px) scaleX(1);
+}
+.middle-left-open {
+	transform: scaleY(0) translateX(-20px);
+}
+.middle-right-open {
+	transform: scaleY(0) translateX(20px);
+}
+.bottom-left-open {
+	transform: rotate(-45deg) translateX(5px) scaleX(1);
+}
+.bottom-right-open {
+	transform: rotate(45deg) translateX(-5px) scaleX(1);
+}
+.menu {
+	position: absolute;
+	background-color: #333;
+	right: 1em;
+	top: 3.7em;
+	z-index: 1000;
+	border-radius: 5px;
+	box-shadow: 3px 3px #111;
+	transition: transform 0.2s;
+	transform-origin: top center;
+}
+.show-menu {
+	transform: scaleY(1);
+}
+.hide-menu {
+	transform: scaleY(0);
+	transition-delay: 0.5s;
+}
+.link-list {
+	margin: 5px;
+	padding: 5px;
+	text-align: right;
+	list-style: none;
+	font-size: 1.4em;
+}
+p {
+	margin: 10px;
+}
+.show-link {
+	transform: scaleX(1);
+	transform-origin: right center;
+	transition: transform 0.2s;
+}
+.hidden-link {
+	transform: scaleX(0);
+	transform-origin: right center;
+	transition: transform 0.2s;
+}
+.link-one {
+	transition-delay: 0.3s;
+}
+.hidden-link-one {
+	transition-delay: 0.4s;
+}
+.link-two {
+	transition-delay: 0.4s;
+}
+.hidden-link-two {
+	transition-delay: 0.3s;
+}
+.link-three {
+	transition-delay: 0.5s;
+}
+.hidden-link-three {
+	transition-delay: 0.2s;
+}
+.link-four {
+	transition-delay: 0.6s;
+}
+.hidden-link-four {
+	transition-delay: 0.1s;
+}
+.link-five {
+	transition-delay: 0.7s;
 }

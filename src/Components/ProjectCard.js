@@ -2,21 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 function ProjectCard(props) {
-    function testStuff() {
-			console.log(props);
-		}
     return (
 			<div>
 				<Link to={`/LFH/${props.id}`}>
 					<div>
-						<p>Project Name: {props.projectName}</p>
-						<p>Skills Desired: {props.skillsDesired.join(' ')}</p>
-						<p>Contacts: {props.contacts.join(' ')}</p>
-						<p>Availability Desired: {props.availabilityDesired}</p>
-                        <p>Timeline: {props.timeline}</p>
+						<p>Project Name: {props.project_name}</p>
+						<p>Description: {props.description}</p>
+						<p>Skills Desired: {props.skills_desired}</p>
+						<p>Availability Desired: {props.availability_desired}</p>
+						<p>Timeline: {props.timeline}</p>
 						<p>Payrate: ${props.payrate}/hour</p>
+						<p>Contact: {props.contact}</p>
 					</div>
-				</Link><button onClick={testStuff}>Test Stuff</button>
+				</Link>
 			</div>
 		);
 }

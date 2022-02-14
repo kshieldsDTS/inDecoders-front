@@ -1,11 +1,11 @@
 import React from 'react';
 
-function User(props) {
+function UserCard(props) {
     return (
         <div>
-            Hello from User!
+            
         </div>
     );
 }
 
-export default User;
+export default UserCard;
