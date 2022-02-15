@@ -85,45 +85,49 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							type='checkbox'
 							onChange={toggleChange}
 							id='sunday'
-							defaultValue={seekerData.sunday}></input>
+							defaultChecked={seekerData.sunday}></input>
 						<label>Monday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='monday'
-							></input>
+							defaultChecked={seekerData.monday}></input>
 						<label>Tuesday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='tuesday'
-							></input>
+							defaultChecked={seekerData.tuesday}></input>
 						<label>Wednesday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='wednesday'
-							></input>
+							defaultChecked={seekerData.wednesday}></input>
 						<label>Thursday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='thursday'
-							></input>
+							defaultChecked={seekerData.thursday}></input>
 						<label>Friday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='friday'
-							></input>
+							defaultChecked={seekerData.friday}></input>
 						<label>Saturday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='saturday'
-							></input>
+							defaultChecked={seekerData.saturday}></input>
 						<label>Payrate:</label>
-						<input type="number" id='payrate_desired' onChange={handleChange} defaultValue={seekerData.payrate_desired}></input>
+						<input
+							type='number'
+							id='payrate_desired'
+							onChange={handleChange}
+							defaultValue={seekerData.payrate_desired}></input>
 					</form>
 				)}
 				{userInfo && seekerData && loggedIn ? (
@@ -132,18 +136,20 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							<button onClick={editSeeker}>Edit Seeker</button>
 						) : (
 							<div>
-							<div>
-								<button onClick={updateSeeker}>Update</button>
-								<button onClick={editSeeker}>Cancel</button>
-							</div>
-							<div>
-								<button onClick={deleteSeeker}>Delete Seeker</button>
-							</div>
+								<div>
+									<button onClick={updateSeeker}>Update</button>
+									<button onClick={editSeeker}>Cancel</button>
+								</div>
+								<div>
+									<button onClick={deleteSeeker}>Delete Seeker</button>
+								</div>
 							</div>
 						)
 					) : null
 				) : null}
-				{success ? <p>You have successfully updated your Seeker Post!</p> : null}
+				{success ? (
+					<p>You have successfully updated your Seeker Post!</p>
+				) : null}
 			</div>
 		);
 }
