@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api_url from '../apiConfig';
 
 function ProjectCardEdit({ userInfo, loggedIn}) {
+	const navigate = useNavigate()
     const params = useParams()
     const id = params.id
 	const [projectData, setProjectData] = useState();
@@ -16,11 +18,9 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 			try {
 				const fetchedData = await axios.get(url)
 				setProjectData(fetchedData.data)
-			} catch(err) {
-				console.error(err)
-			}
+			} catch(err) {}
 		})()
-	})
+	}, [id])
 	function handleChange(ev) {
 		setNewProjectData({ ...newProjectData, [ev.target.id]: ev.target.value });
 	}
@@ -42,7 +42,6 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 					},
 				}
 			);
-			console.log(response);
 			if (response.status === 200) {
 				setEditing(false);
 				setSuccess(true);
@@ -60,6 +59,7 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 				},
 			});
 			if (response.status === 204) {
+				navigate('/lfh')
 			}
 		} catch (error) {}
 	};
@@ -79,49 +79,73 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 					</div>
 				) : (
 					<form>
-						<label>Skills:</label>
+						<label>Project Name:</label>
 						<input
 							type='text'
-							id='skills'
+							id='project_name'
 							onChange={handleChange}
-							defaultValue={projectData.skills}></input>
+							defaultValue={projectData.project_name}></input>
+						<label>Description:</label>
+						<textarea
+							rows='5'
+							cols='50'
+							id='description'
+							onChange={handleChange}
+							defaultValue={projectData.description}></textarea>
 						<label>Availability:</label>
 						<label>Sunday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='sunday'
-							defaultValue={projectData.sunday}></input>
+							defaultChecked={projectData.sunday}></input>
 						<label>Monday</label>
-						<input type='checkbox' onChange={toggleChange} id='monday'></input>
+						<input
+							type='checkbox'
+							onChange={toggleChange}
+							id='monday'
+							defaultChecked={projectData.monday}></input>
 						<label>Tuesday</label>
-						<input type='checkbox' onChange={toggleChange} id='tuesday'></input>
+						<input
+							type='checkbox'
+							onChange={toggleChange}
+							id='tuesday'
+							defaultChecked={projectData.tuesday}></input>
 						<label>Wednesday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
-							id='wednesday'></input>
+							id='wednesday'
+							defaultChecked={projectData.wednesday}></input>
 						<label>Thursday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
-							id='thursday'></input>
+							id='thursday'
+							defaultChecked={projectData.thursday ? true : false}></input>
 						<label>Friday</label>
-						<input type='checkbox' onChange={toggleChange} id='friday'></input>
+						<input
+							type='checkbox'
+							onChange={toggleChange}
+							id='friday'
+							defaultChecked={projectData.friday}></input>
 						<label>Saturday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
-							id='saturday'></input>
+							id='saturday'
+							defaultChecked={projectData.saturday}></input>
+						<label>Timeline:</label>
+						<input type ='text' id='timeline' onChange={handleChange} defaultValue={projectData.timeline}></input>
 						<label>Payrate:</label>
 						<input
 							type='number'
-							id='payrate_desired'
+							id='payrate'
 							onChange={handleChange}
 							defaultValue={projectData.payrate}></input>
 					</form>
 				)}
-				{userInfo && projectData ? (
+				{loggedIn && userInfo && projectData ? (
 					userInfo.username === projectData.owner ? (
 						!editing ? (
 							<button onClick={editProject}>Edit Seeker</button>

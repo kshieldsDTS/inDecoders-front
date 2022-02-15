@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api_url from '../apiConfig';
 
 function SeekerCardEdit({ userInfo, loggedIn }) {
+	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id
-	const [workerData, setWorkerData] = useState();
+	const [seekerData, setSeekerData] = useState();
 	const [editing, setEditing] = useState(false)
 	const [newUserData, setNewUserData] = useState()
 	const [success, setSuccess] = useState(false)
@@ -15,10 +17,8 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url);
-				setWorkerData(fetchedData.data);
-			} catch (err) {
-				console.error(err);
-			}
+				setSeekerData(fetchedData.data);
+			} catch (err) {}
 		})();
 	}, [id]);
 	 function handleChange(ev) {
@@ -29,11 +29,11 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 		}
 	function editSeeker(){
 		setEditing(!editing)
-		setNewUserData(workerData)
+		setNewUserData(seekerData)
 	}
 	const updateSeeker = async () => {
 		try {
-			const response = await axios.patch(`${api_url}LFWork/${workerData.id}`, newUserData, {
+			const response = await axios.patch(`${api_url}LFWork/${seekerData.id}`, newUserData, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
@@ -50,28 +50,27 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 	};
 	const deleteSeeker = async () => {
 		try {
-			const response = await axios.delete(`${api_url}LFWork/${workerData.id}`, {
+			const response = await axios.delete(`${api_url}LFWork/${seekerData.id}`, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
 			if (response.status === 204) {
+				navigate('/lfw')
 			}
-		} catch (error) {
-			
-		}
+		} catch (error) {}
 	}
     return (
 			<div>
-				{!workerData ? (
+				{!seekerData ? (
 					'Loading card...'
 				) : !editing ? (
 					<div>
-						<p>Name: {workerData.owner}</p>
-						<p>Email: {workerData.email}</p>
-						<p>Skills: {workerData.skills}</p>
-						<p>Availability: {workerData.availability}</p>
-						<p>Payrate: ${workerData.payrate_desired}/hour</p>
+						<p>Name: {seekerData.owner}</p>
+						<p>Email: {seekerData.email}</p>
+						<p>Skills: {seekerData.skills}</p>
+						<p>Availability: {seekerData.availability}</p>
+						<p>Payrate: ${seekerData.payrate_desired}/hour</p>
 					</div>
 				) : (
 					<form>
@@ -80,14 +79,14 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							type='text'
 							id='skills'
 							onChange={handleChange}
-							defaultValue={workerData.skills}></input>
+							defaultValue={seekerData.skills}></input>
 						<label>Availability:</label>
 						<label>Sunday</label>
 						<input
 							type='checkbox'
 							onChange={toggleChange}
 							id='sunday'
-							defaultValue={workerData.sunday}></input>
+							defaultValue={seekerData.sunday}></input>
 						<label>Monday</label>
 						<input
 							type='checkbox'
@@ -125,11 +124,11 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							id='saturday'
 							></input>
 						<label>Payrate:</label>
-						<input type="number" id='payrate_desired' onChange={handleChange} defaultValue={workerData.payrate_desired}></input>
+						<input type="number" id='payrate_desired' onChange={handleChange} defaultValue={seekerData.payrate_desired}></input>
 					</form>
 				)}
-				{userInfo && workerData ? (
-					userInfo.username === workerData.owner ? (
+				{userInfo && seekerData ? (
+					userInfo.username === seekerData.owner ? (
 						!editing ? (
 							<button onClick={editSeeker}>Edit Seeker</button>
 						) : (

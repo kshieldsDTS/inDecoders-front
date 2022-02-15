@@ -32,7 +32,6 @@ function CreateSeeker(props) {
                     Authorization: `Token ${localStorage.getItem('token')}`
                 }
             })
-            console.log(response);
             if (response.status === 201) {
                 setSuccess(true)
                 setTimeout(() => {
