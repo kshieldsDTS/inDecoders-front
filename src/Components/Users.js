@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserCard from './UserCard'
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 function User(props) {
     const [fetchedUsers, setFetchedUsers] = useState()
     useEffect(() => {
-        const url = `${api_url}getusers`;
+        const url = `${URL}getusers`;
         (async () => {
             try {
                 const fetchedData = await axios.get(url)
@@ -23,13 +23,14 @@ function User(props) {
         <div>
             {fetchedUsers ?
                 fetchedUsers.map((user, i) => (
-                    <UserCard
+                        <UserCard
 							key={i}
 							id={user.id}
 							name={user.username}
                             email={user.email}
                             skills={user.skills}
                             portfolio={user.portfolio}
+                            bio={user.bio}
                             payrate={user.payrate}
                             sunday={user.sunday}
                             monday={user.monday}
@@ -38,7 +39,7 @@ function User(props) {
                             thursday={user.thursday}
                             friday={user.friday}
                             saturday={user.saturday}
-						/>
+						/>    
                 )) 
                 :
                 'Please wait... Heroku is waking up...'

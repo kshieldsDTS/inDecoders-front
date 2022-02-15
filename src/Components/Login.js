@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom'
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 function Login({ handleSetLoggedIn }) {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ function Login({ handleSetLoggedIn }) {
         sendData();
     }
     const sendData = async() => {
-        const response = await axios.post(`${api_url}token/login/`, formData)
+        const response = await axios.post(`${URL}token/login/`, formData)
         console.log(response);
         if (response.status === 200) {
             handleSetLoggedIn(response.data.auth_token);

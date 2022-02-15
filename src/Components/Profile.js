@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 import { useNavigate } from 'react-router-dom';
 
 function Profile({ userInfo, loggedIn }) {
@@ -11,7 +11,7 @@ function Profile({ userInfo, loggedIn }) {
     const [newUserData, setNewUserData] = useState()
     const [success, setSuccess] = useState(false)
     useEffect(() => {
-        const url = `${api_url}`;
+        const url = `${URL}`;
         (async () => {
             try {
                 const initialFetch = await axios.get(`${url}users/`, { headers: {
@@ -32,7 +32,7 @@ function Profile({ userInfo, loggedIn }) {
     }
     const updateProfile = async () => {
         try {
-            const response = await axios.patch(`${api_url}getusers/${currentUserData.id}`, newUserData, {
+            const response = await axios.patch(`${URL}getusers/${currentUserData.id}`, newUserData, {
                 headers: {
                     Authorization: `Token ${localStorage.getItem('token')}`,
                 }
@@ -49,7 +49,7 @@ function Profile({ userInfo, loggedIn }) {
     }
     const deleteProfile = async () => {
         try {
-            const response = await axios.delete(`${api_url}getusers/${currentUserData.id}`, {
+            const response = await axios.delete(`${URL}getusers/${currentUserData.id}`, {
                 headers: {
                     Authorization: `Token ${localStorage.getItem('token')}`,
                 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 import { Link, useNavigate } from 'react-router-dom'
 
 const initialFormData = {
@@ -30,7 +30,7 @@ function NewUser(props) {
         sendData()
     }
     const sendData = async() => {
-        const response = await axios.post(`${api_url}users/`, formData)
+        const response = await axios.post(`${URL}users/`, formData)
         if (response.status === 201) {
             setSuccess(true)
             setTimeout(() => {

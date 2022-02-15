@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCard'
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 function LFH({ userInfo, loggedIn }) {
 	const [fetchedProjects, setFetchedProjects] = useState()
 	useEffect(() => {
-		const url = `${api_url}LFHelp/`;
+		const url = `${URL}LFHelp/`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)

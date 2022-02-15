@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
-function SeekerCardEdit({ userInfo, loggedIn }) {
+function SeekerCardDetail({ userInfo, loggedIn }) {
 	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id
@@ -13,7 +13,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 	const [newSeekerData, setNewSeekerData] = useState()
 	const [success, setSuccess] = useState(false)
 	useEffect(() => {
-		const url = `${api_url}LFWork/${id}`;
+		const url = `${URL}LFWork/${id}`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url);
@@ -33,7 +33,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 	}
 	const updateSeeker = async () => {
 		try {
-			const response = await axios.patch(`${api_url}LFWork/${seekerData.id}`, newSeekerData, {
+			const response = await axios.patch(`${URL}LFWork/${seekerData.id}`, newSeekerData, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
@@ -49,7 +49,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 	};
 	const deleteSeeker = async () => {
 		try {
-			const response = await axios.delete(`${api_url}LFWork/${seekerData.id}`, {
+			const response = await axios.delete(`${URL}LFWork/${seekerData.id}`, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
@@ -154,4 +154,4 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 		);
 }
 
-export default SeekerCardEdit;
+export default SeekerCardDetail;

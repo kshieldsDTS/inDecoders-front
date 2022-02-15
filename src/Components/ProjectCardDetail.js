@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
-function ProjectCardEdit({ userInfo, loggedIn}) {
+function ProjectCardDetail({ userInfo, loggedIn}) {
 	const navigate = useNavigate()
     const params = useParams()
     const id = params.id
@@ -13,7 +13,7 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 	const [newProjectData, setNewProjectData] = useState();
 	const [success, setSuccess] = useState(false);
 	useEffect(() => {
-		const url = `${api_url}LFHelp/${id}`;
+		const url = `${URL}LFHelp/${id}`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)
@@ -34,7 +34,7 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 	const updateProject = async () => {
 		try {
 			const response = await axios.patch(
-				`${api_url}LFHelp/${projectData.id}`,
+				`${URL}LFHelp/${projectData.id}`,
 				newProjectData,
 				{
 					headers: {
@@ -53,7 +53,7 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 	};
 	const deleteProject = async () => {
 		try {
-			const response = await axios.delete(`${api_url}LFHelp/${projectData.id}`, {
+			const response = await axios.delete(`${URL}LFHelp/${projectData.id}`, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
@@ -169,4 +169,4 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 		);
 }
 
-export default ProjectCardEdit;
+export default ProjectCardDetail;

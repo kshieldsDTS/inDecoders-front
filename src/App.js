@@ -5,14 +5,14 @@ import Nav from './Components/Nav'
 import Dashboard from './Components/Dashboard'
 import LFW from './Components/LFW';
 import LFH from './Components/LFH';
-import ProjectCardEdit from './Components/ProjectCardEdit';
+import ProjectCardDetail from './Components/ProjectCardDetail';
 import CreateProject from './Components/CreateProject'
-import SeekerCardEdit from './Components/SeekerCardEdit';
+import SeekerCardDetail from './Components/SeekerCardDetail';
 import CreateSeeker from './Components/CreateSeeker'
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import Users from './Components/Users';
-import UserCard from './Components/UserCard'
+import UserCardDetail from './Components/UserCardDetail';
 import Profile from './Components/Profile'
 import About from './Components/About';
 import axios from 'axios';
@@ -76,11 +76,11 @@ function App() {
 					userInfo={userInfo}
 					loggedIn={loggedIn} />}/>
 				<Route path='/lfh/:id' element={
-					<ProjectCardEdit 
+					<ProjectCardDetail 
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/lfw/:id' element={
-					<SeekerCardEdit 
+					<SeekerCardDetail 
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/signup' element={<SignUp />}/>
@@ -91,7 +91,7 @@ function App() {
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/users/:id' element={
-					<UserCard
+					<UserCardDetail
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/profile/' element={

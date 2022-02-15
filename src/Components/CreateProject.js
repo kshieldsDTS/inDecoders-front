@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 const blankData = {
     project_name: '',
@@ -29,7 +29,7 @@ function CreateProject(props) {
     }
     const postProject = async () => {
 			try {
-				const response = await axios.post(`${api_url}LFHelp/`, postData, {
+				const response = await axios.post(`${URL}LFHelp/`, postData, {
 					headers: {
 						Authorization: `Token ${localStorage.getItem('token')}`,
 					},

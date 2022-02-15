@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SeekerCard from './SeekerCard';
 import axios from 'axios';
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 function LFW({ userInfo, loggedIn }) {
 	const [displayData, setDisplayData] = useState()
 	useEffect(() => {
-		const url = `${api_url}LFWork`;
+		const url = `${URL}LFWork`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)

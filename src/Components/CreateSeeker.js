@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import api_url from '../apiConfig';
+import URL from '../apiConfig';
 
 const blankData = {
     skills: '',
@@ -27,7 +27,7 @@ function CreateSeeker(props) {
     }
     const postSeeker = async () => {
         try {
-            const response = await axios.post(`${api_url}LFWork/`, postData, {
+            const response = await axios.post(`${URL}LFWork/`, postData, {
                 headers: {
                     Authorization: `Token ${localStorage.getItem('token')}`
                 }
