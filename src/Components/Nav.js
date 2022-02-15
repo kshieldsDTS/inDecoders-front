@@ -32,7 +32,9 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 								className={!menuOpen ? 'line' : 'line bottom-right-open'}></div>
 						</div>
 					</div>
-					<nav onClick={toggleMenu} className={menuOpen ? 'menu show-menu' : 'menu hide-menu'}>
+					<nav
+						onClick={toggleMenu}
+						className={menuOpen ? 'menu show-menu' : 'menu hide-menu'}>
 						<ul className='link-list'>
 							<Link to='/'>
 								<li
@@ -75,16 +77,18 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 								</li>
 							</Link>
 							{loggedIn ? (
-								<li	
-									cursor='pointer'
-									onClick={handleLogout}
-									className={
-										menuOpen
-											? 'show-link link-five'
-											: 'hidden-link hidden-link-five'
-									}>
-									<p>Logout</p>
-								</li>
+								<Link to='/'>
+									<li
+										cursor='pointer'
+										onClick={handleLogout}
+										className={
+											menuOpen
+												? 'show-link link-five'
+												: 'hidden-link hidden-link-five'
+										}>
+										<p>Logout</p>
+									</li>
+								</Link>
 							) : (
 								<Link to='/login'>
 									<li

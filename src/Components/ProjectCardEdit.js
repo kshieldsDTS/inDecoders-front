@@ -152,7 +152,7 @@ function ProjectCardEdit({ userInfo, loggedIn}) {
 						) : (
 							<div>
 								<div>
-									<button onClick={updateProject}>Update</button>
+									<button type='submit' onClick={updateProject}>Update</button>
 									<button onClick={editProject}>Cancel</button>
 								</div>
 								<div>

@@ -137,7 +137,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 						) : (
 							<div>
 								<div>
-									<button onClick={updateSeeker}>Update</button>
+									<button type='submit' onClick={updateSeeker}>Update</button>
 									<button onClick={editSeeker}>Cancel</button>
 								</div>
 								<div>

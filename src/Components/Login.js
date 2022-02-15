@@ -29,7 +29,7 @@ function Login({ handleSetLoggedIn }) {
                 <legend>Password:</legend>
                 <input type='password' id='password' onChange={handleChange} required autoComplete='auto'></input>
                 <br/>
-                <button onClick={submitForm}>Submit</button>
+                <button type='submit' onClick={submitForm}>Submit</button>
             </form>
         </div>
     );
