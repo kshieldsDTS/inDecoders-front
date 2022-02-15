@@ -1,9 +1,17 @@
 import React from 'react';
 
-function Main(props) {
+function Main({ userInfo }) {
+    function test(){
+        console.log(userInfo);
+    }
     return (
         <div>
-            <h1>Welcome to inDecoders!</h1>
+            {userInfo ? 
+                <h1>Welcome back, {userInfo.username}!</h1>
+                :
+                <h1>Welcome to inDecoders!</h1>
+            }
+            <button onClick={test}>Test</button>
         </div>
     );
 }
