@@ -46,7 +46,6 @@ function CreateSeeker(props) {
 					<label>Skills:</label>
 					<input type='text' id='skills' onChange={handleChange}></input>
 					<label>Availability:</label>
-					<input type='text' id='availability' onChange={handleChange}></input>
 					<label>Sunday</label>
 					<input type='checkbox' onClick={toggleChange} id='sunday'></input>
 					<label>Monday</label>
@@ -62,7 +61,7 @@ function CreateSeeker(props) {
 					<label>Saturday</label>
 					<input type='checkbox' onClick={toggleChange} id='saturday'></input>
 					<label>Pay/Hour:</label>
-					<input type='number'></input>
+					<input type='number' onChange={handleChange} id='payrate_desired'></input>
 				</form>
                 {success ? <p>Your post has been created successfully. Redirecting you to your new post.</p> 
                 : 

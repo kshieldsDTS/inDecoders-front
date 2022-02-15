@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import api_url from '../apiConfig';
 
 function SeekerCardEdit({ userInfo, loggedIn }) {
+	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id
 	const [workerData, setWorkerData] = useState();
 	const [editing, setEditing] = useState(false)
 	const [newUserData, setNewUserData] = useState()
+	const [success, setSuccess] = useState(false)
 	useEffect(() => {
 		const url = `${api_url}LFWork/${id}`;
 		(async () => {
@@ -26,23 +29,40 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 		function toggleChange(ev) {
 			setNewUserData({ ...newUserData, [ev.target.id]: ev.target.checked });
 		}
-	function editUser(){
+	function editSeeker(){
 		setEditing(!editing)
 		setNewUserData(workerData)
 	}
-	const updateUser = async () => {
+	const updateSeeker = async () => {
 		try {
-			const response = await axios.put(`${api_url}LFWork/${workerData.id}`, newUserData, {
+			const response = await axios.patch(`${api_url}LFWork/${workerData.id}`, newUserData, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
 			console.log(response);
-			if (response.status === 201) {
-				setWorkerData(response.data)
+			if (response.status === 200){
+				setEditing(false)
+				setSuccess(true)
+				setTimeout(() => {
+					setSuccess(false)
+				}, 5000);
 			}
 		} catch (error) {}
 	};
+	const deleteSeeker = async () => {
+		try {
+			const response = await axios.delete(`${api_url}LFWork/${workerData.id}`, {
+				headers: {
+					Authorization: `Token ${localStorage.getItem('token')}`,
+				},
+			});
+			if (response.status === 204) {
+			}
+		} catch (error) {
+			
+		}
+	}
     return (
 			<div>
 				{!workerData ? (
@@ -64,17 +84,6 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							onChange={handleChange}
 							defaultValue={workerData.skills}></input>
 						<label>Availability:</label>
-						<input
-							type='text'
-							id='availability'
-							onChange={handleChange}
-							defaultValue={workerData.availability}></input>
-						<label>Payrate:</label>
-						<input
-							type='number'
-							id='payrate'
-							onChange={handleChange}
-							defaultValue={workerData.payrate}></input>
 						<label>Sunday</label>
 						<input
 							type='checkbox'
@@ -117,20 +126,28 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 							onChange={toggleChange}
 							id='saturday'
 							></input>
+						<label>Payrate:</label>
+						<input type="number" id='payrate_desired' onChange={handleChange} defaultValue={workerData.payrate_desired}></input>
 					</form>
 				)}
 				{userInfo && workerData ? (
 					userInfo.username === workerData.owner ? (
 						!editing ? (
-							<button onClick={editUser}>Edit User</button>
+							<button onClick={editSeeker}>Edit Seeker</button>
 						) : (
 							<div>
-								<button onClick={updateUser}>Update</button>
-								<button onClick={editUser}>Cancel</button>
+							<div>
+								<button onClick={updateSeeker}>Update</button>
+								<button onClick={editSeeker}>Cancel</button>
+							</div>
+							<div>
+								<button onClick={deleteSeeker}>Delete Seeker</button>
+							</div>
 							</div>
 						)
 					) : null
 				) : null}
+				{success ? <p>You have successfully updated your Seeker Post!</p> : null}
 			</div>
 		);
 }

@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import Nav from './Components/Nav'
-import Main from './Components/Main'
+import Dashboard from './Components/Dashboard'
 import LFW from './Components/LFW';
 import LFH from './Components/LFH';
 import ProjectCard from './Components/ProjectCardEdit';
@@ -55,7 +55,7 @@ function App() {
 			/>
 			<Routes>
 				<Route path='/' element={
-					<Main 
+					<Dashboard 
 					userInfo={userInfo}
 					loggedIn={loggedIn} />}/>
 				<Route path='/lfw' element={

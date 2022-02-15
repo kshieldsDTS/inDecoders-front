@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import SeekerCard from './SeekerCard';
 import axios from 'axios';
 import api_url from '../apiConfig';
 
-function LFW(props) {
+function LFW({ userInfo, loggedIn }) {
 	const [displayData, setDisplayData] = useState()
 	useEffect(() => {
 		const url = `${api_url}LFWork`;
@@ -18,6 +19,12 @@ function LFW(props) {
 	}, [])
     return (
         <div>
+			{loggedIn ?
+				<Link to='/createseeker'>
+					<button>Create Seeker Post</button>
+				</Link>
+				: null
+			}
 			{displayData ? 
 				displayData.map((element, i) => (
                 <SeekerCard

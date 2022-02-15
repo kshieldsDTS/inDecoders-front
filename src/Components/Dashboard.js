@@ -1,8 +1,9 @@
 import React from 'react';
 
-function Main({ userInfo }) {
+function Dashboard({ userInfo, loggedIn }) {
     function test(){
         console.log(userInfo);
+        console.log(loggedIn);
     }
     return (
         <div>
@@ -11,9 +12,13 @@ function Main({ userInfo }) {
                 :
                 <h1>Welcome to inDecoders!</h1>
             }
+            Create a New Seeker Post
+            Create a New Project Post
+
+            Your posts:
             <button onClick={test}>Test</button>
         </div>
     );
 }
 
-export default Main;
+export default Dashboard;

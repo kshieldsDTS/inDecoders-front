@@ -32,7 +32,7 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 								className={!menuOpen ? 'line' : 'line bottom-right-open'}></div>
 						</div>
 					</div>
-					<nav className={menuOpen ? 'menu show-menu' : 'menu hide-menu'}>
+					<nav onClick={toggleMenu} className={menuOpen ? 'menu show-menu' : 'menu hide-menu'}>
 						<ul className='link-list'>
 							<Link to='/'>
 								<li
@@ -51,7 +51,7 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 											? 'show-link link-two'
 											: 'hidden-link hidden-link-two'
 									}>
-									<p>Browse Job Seekers</p>
+									<p>Job Seekers</p>
 								</li>
 							</Link>
 							<Link to='/LFH'>
@@ -61,7 +61,7 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 											? 'show-link link-three'
 											: 'hidden-link hidden-link-three'
 									}>
-									<p>Browse Projects</p>
+									<p>Projects</p>
 								</li>
 							</Link>
 							<Link to='/users'>
@@ -71,12 +71,12 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 											? 'show-link link-four'
 											: 'hidden-link hidden-link-four'
 									}>
-									<p>Browse Users</p>
+									<p>Users</p>
 								</li>
 							</Link>
-              {loggedIn ?
+							{loggedIn ? (
 								<li
-                  onClick={handleLogout}
+									onClick={handleLogout}
 									className={
 										menuOpen
 											? 'show-link link-five'
@@ -84,18 +84,18 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 									}>
 									<p>Logout</p>
 								</li>
-              :
-							<Link to='/login'>
-								<li
-									className={
-										menuOpen
-											? 'show-link link-five'
-											: 'hidden-link hidden-link-five'
-									}>
-									<p>Login</p>
-								</li>
-							</Link>
-              }
+							) : (
+								<Link to='/login'>
+									<li
+										className={
+											menuOpen
+												? 'show-link link-five'
+												: 'hidden-link hidden-link-five'
+										}>
+										<p>Login</p>
+									</li>
+								</Link>
+							)}
 							<Link to='/user'>
 								<li
 									className={
@@ -104,6 +104,16 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 											: 'hidden-link hidden-link-six'
 									}>
 									<p>{userInfo ? userInfo.username : null}</p>
+								</li>
+							</Link>
+							<Link to='/signup'>
+								<li
+									className={
+										menuOpen
+											? 'show-link link-seven'
+											: 'hidden-link hidden-link-seven'
+									}>
+									{userInfo ? null : <p>Sign Up</p>}
 								</li>
 							</Link>
 						</ul>
