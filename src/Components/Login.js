@@ -1,14 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import api_url from '../apiConfig';
 
 function Login({ handleSetLoggedIn }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState();
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
     function handleChange(ev){
         setFormData({...formData, [ev.target.id]: ev.target.value })
     }
