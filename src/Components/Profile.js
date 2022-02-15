@@ -22,7 +22,7 @@ function Profile({ userInfo, loggedIn }) {
                 setCurrentUserData(secondFetch.data)
             } catch (error) {}
         })()
-    }, [])
+    }, [currentUserData])
     function handleChange(ev) {
 		setNewUserData({ ...newUserData, [ev.target.id]: ev.target.value });
 		}
@@ -56,6 +56,7 @@ function Profile({ userInfo, loggedIn }) {
             })
             console.log(response);
             if (response.status === 204);
+                localStorage.clear()
                 navigate('/')
         } catch (error)  {}
     }

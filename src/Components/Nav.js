@@ -121,6 +121,15 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 									{userInfo ? null : <p>Sign Up</p>}
 								</li>
 							</Link>
+							<Link to='/about'>
+								<li
+									className={
+										menuOpen
+											? 'show-link link-eight'
+											: 'hidden-link hidden-link-eight'
+									}>
+									<p>About inDecoders</p></li>
+							</Link>
 						</ul>
 					</nav>
 				</div>

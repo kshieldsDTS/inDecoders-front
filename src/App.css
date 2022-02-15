@@ -70,7 +70,7 @@ a {
 }
 .hide-menu {
 	transform: scaleY(0);
-	transition-delay: 0.7s;
+	transition-delay: 0.8s;
 }
 .link-list {
 	margin: 5px;
@@ -96,32 +96,45 @@ p {
 	transition-delay: 0.3s;
 }
 .hidden-link-one {
-	transition-delay: 0.5s;
+	transition-delay: 0.7s;
 }
 .link-two {
 	transition-delay: 0.4s;
 }
 .hidden-link-two {
-	transition-delay: 0.4s;
+	transition-delay: 0.6s;
 }
 .link-three {
 	transition-delay: 0.5s;
 }
 .hidden-link-three {
-	transition-delay: 0.3s;
+	transition-delay: 0.5s;
 }
 .link-four {
 	transition-delay: 0.6s;
 }
 .hidden-link-four {
-	transition-delay: 0.2s;
+	transition-delay: 0.4s;
 }
 .link-five {
 	transition-delay: 0.7s;
 }
 .hidden-link-five {
-	transition-delay: 0.1s;
+	transition-delay: 0.3s;
 }
 .link-six {
 	transition-delay: 0.8s;
 }
+.hidden-link-six {
+	transition-delay: 0.2s;
+}
+.link-seven {
+	transition-delay: 0.9s;
+}
+.hidden-link-seven {
+	transition-delay: 0.1s;
+}
+.link-eight {
+	transition-delay: 1s;
+}
+
