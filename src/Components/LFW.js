@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import WorkerCard from './WorkerCard';
+import SeekerCard from './SeekerCard';
 import axios from 'axios';
 import api_url from '../apiConfig';
 
@@ -20,7 +20,7 @@ function LFW(props) {
         <div>
 			{displayData ? 
 				displayData.map((element, i) => (
-                <WorkerCard
+                <SeekerCard
                     key={i}
                     id={element.id}
                     name={element.owner}

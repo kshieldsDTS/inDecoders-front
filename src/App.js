@@ -6,7 +6,7 @@ import Main from './Components/Main'
 import LFW from './Components/LFW';
 import LFH from './Components/LFH';
 import ProjectCard from './Components/ProjectCardEdit';
-import WorkerCard from './Components/WorkerCardEdit';
+import SeekerCardEdit from './Components/SeekerCardEdit';
 import CreateSeeker from './Components/CreateSeeker'
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
@@ -75,7 +75,7 @@ function App() {
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/lfw/:id' element={
-					<WorkerCard 
+					<SeekerCardEdit 
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/signup' element={<SignUp />}/>

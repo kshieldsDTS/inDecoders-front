@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function WorkerCard(props) {
+function SeekerCard(props) {
     return (
 			<div>
 				<Link to={`/LFW/${props.id}`}>
@@ -17,4 +17,4 @@ function WorkerCard(props) {
 		);
 }
 
-export default WorkerCard;
+export default SeekerCard;
