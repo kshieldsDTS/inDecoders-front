@@ -94,7 +94,7 @@ function App() {
 					<UserCard
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
-				<Route path='/profile' element={
+				<Route path='/profile/' element={
 					<Profile 
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>

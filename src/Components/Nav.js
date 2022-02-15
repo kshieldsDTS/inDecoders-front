@@ -75,7 +75,8 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 								</li>
 							</Link>
 							{loggedIn ? (
-								<li
+								<li	
+									cursor='pointer'
 									onClick={handleLogout}
 									className={
 										menuOpen
@@ -96,7 +97,7 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 									</li>
 								</Link>
 							)}
-							<Link to='/user'>
+							<Link to={`/profile/`}>
 								<li
 									className={
 										menuOpen

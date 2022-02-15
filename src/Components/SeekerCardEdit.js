@@ -10,7 +10,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 	const id = params.id
 	const [seekerData, setSeekerData] = useState();
 	const [editing, setEditing] = useState(false)
-	const [newUserData, setNewUserData] = useState()
+	const [newSeekerData, setNewSeekerData] = useState()
 	const [success, setSuccess] = useState(false)
 	useEffect(() => {
 		const url = `${api_url}LFWork/${id}`;
@@ -20,25 +20,24 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 				setSeekerData(fetchedData.data);
 			} catch (err) {}
 		})();
-	}, [id]);
+	});
 	 function handleChange(ev) {
-			setNewUserData({ ...newUserData, [ev.target.id]: ev.target.value });
+			setNewSeekerData({ ...newSeekerData, [ev.target.id]: ev.target.value });
 		}
 		function toggleChange(ev) {
-			setNewUserData({ ...newUserData, [ev.target.id]: ev.target.checked });
+			setNewSeekerData({ ...newSeekerData, [ev.target.id]: ev.target.checked });
 		}
 	function editSeeker(){
 		setEditing(!editing)
-		setNewUserData(seekerData)
+		setNewSeekerData(seekerData)
 	}
 	const updateSeeker = async () => {
 		try {
-			const response = await axios.patch(`${api_url}LFWork/${seekerData.id}`, newUserData, {
+			const response = await axios.patch(`${api_url}LFWork/${seekerData.id}`, newSeekerData, {
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
-			console.log(response);
 			if (response.status === 200){
 				setEditing(false)
 				setSuccess(true)
@@ -127,7 +126,7 @@ function SeekerCardEdit({ userInfo, loggedIn }) {
 						<input type="number" id='payrate_desired' onChange={handleChange} defaultValue={seekerData.payrate_desired}></input>
 					</form>
 				)}
-				{userInfo && seekerData ? (
+				{userInfo && seekerData && loggedIn ? (
 					userInfo.username === seekerData.owner ? (
 						!editing ? (
 							<button onClick={editSeeker}>Edit Seeker</button>
