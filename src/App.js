@@ -5,7 +5,8 @@ import Nav from './Components/Nav'
 import Dashboard from './Components/Dashboard'
 import LFW from './Components/LFW';
 import LFH from './Components/LFH';
-import ProjectCard from './Components/ProjectCardEdit';
+import ProjectCardEdit from './Components/ProjectCardEdit';
+import CreateProject from './Components/CreateProject'
 import SeekerCardEdit from './Components/SeekerCardEdit';
 import CreateSeeker from './Components/CreateSeeker'
 import SignUp from './Components/SignUp';
@@ -66,12 +67,16 @@ function App() {
 					<CreateSeeker 
 					userInfo={userInfo}
 					loggedIn={loggedIn} />}/>
+				<Route path='/createproject' element={
+					<CreateProject
+					userInfo={userInfo}
+					loggedIn={loggedIn} />}/>
 				<Route path='/lfh' element={
 					<LFH
 					userInfo={userInfo}
 					loggedIn={loggedIn} />}/>
 				<Route path='/lfh/:id' element={
-					<ProjectCard 
+					<ProjectCardEdit 
 					userInfo={userInfo}
 					loggedIn={loggedIn}/>}/>
 				<Route path='/lfw/:id' element={
