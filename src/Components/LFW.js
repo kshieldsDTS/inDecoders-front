@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import WorkerCard from './WorkerCard';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import api_url from '../apiConfig';
 

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard'
-import { useEffect, useState } from 'react'
 import axios from 'axios';
 import api_url from '../apiConfig';
 
