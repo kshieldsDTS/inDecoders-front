@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material';
 
 function SeekerCardDetail({ userInfo, loggedIn }) {
 	const navigate = useNavigate()
@@ -25,7 +26,7 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 			setNewSeekerData({ ...newSeekerData, [ev.target.id]: ev.target.value });
 		}
 		function toggleChange(ev) {
-			setNewSeekerData({ ...newSeekerData, [ev.target.id]: ev.target.checked });
+			setNewSeekerData({ ...newSeekerData, [ev.target.id]: !newSeekerData[ev.target.id]});
 		}
 	function editSeeker(){
 		setEditing(!editing)
@@ -60,96 +61,122 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 		} catch (error) {}
 	}
     return (
-			<div>
-				{!seekerData ? (
-					'Loading card...'
-				) : !editing ? (
-					<div>
-						<p>Name: {seekerData.owner}</p>
-						<p>Email: {seekerData.email}</p>
-						<p>Skills: {seekerData.skills}</p>
-						<p>Availability: {seekerData.availability}</p>
-						<p>Payrate: ${seekerData.payrate_desired}/hour</p>
-					</div>
-				) : (
-					<form>
-						<label>Skills:</label>
-						<input
-							type='text'
-							id='skills'
-							onChange={handleChange}
-							defaultValue={seekerData.skills}></input>
-						<label>Availability:</label>
-						<label>Sunday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='sunday'
-							defaultChecked={seekerData.sunday}></input>
-						<label>Monday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='monday'
-							defaultChecked={seekerData.monday}></input>
-						<label>Tuesday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='tuesday'
-							defaultChecked={seekerData.tuesday}></input>
-						<label>Wednesday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='wednesday'
-							defaultChecked={seekerData.wednesday}></input>
-						<label>Thursday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='thursday'
-							defaultChecked={seekerData.thursday}></input>
-						<label>Friday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='friday'
-							defaultChecked={seekerData.friday}></input>
-						<label>Saturday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='saturday'
-							defaultChecked={seekerData.saturday}></input>
-						<label>Payrate:</label>
-						<input
-							type='number'
-							id='payrate_desired'
-							onChange={handleChange}
-							defaultValue={seekerData.payrate_desired}></input>
-					</form>
-				)}
-				{userInfo && seekerData && loggedIn ? (
-					userInfo.username === seekerData.owner ? (
-						!editing ? (
-							<button onClick={editSeeker}>Edit Seeker</button>
-						) : (
-							<div>
-								<div>
-									<button type='submit' onClick={updateSeeker}>Update</button>
-									<button onClick={editSeeker}>Cancel</button>
+			<div className='detail-wrapper'>
+				<div className='seeker-card-wrapper'>
+					{!seekerData ? (
+						<CircularProgress color='secondary' />
+					) : (
+						<div className='seeker-card'>
+							<div className='seeker-info'>
+								<div className='item'>
+									<p className='label'>Name:</p>
+									<p className='value'>{seekerData.owner}</p>
 								</div>
-								<div>
-									<button onClick={deleteSeeker}>Delete Seeker</button>
+								<div className='item'>
+									<p className='label'>Email:</p>
+									<p className='value'>{seekerData.email}</p>
 								</div>
 							</div>
-						)
-					) : null
-				) : null}
-				{success ? (
-					<p>You have successfully updated your Seeker Post!</p>
-				) : null}
+							<div className='work-info'>
+								<div className='item'>
+									<p className='label'>Skills:</p>
+									{!editing ? (
+										<p className='value'>{seekerData.skills}</p>
+									) : (
+										<input
+											className='edit'
+											type='text'
+											id='skills'
+											onChange={handleChange}
+											defaultValue={seekerData.skills}></input>
+									)}
+								</div>
+							</div>
+							<div className='item'>
+								<p className='label'>Availability:</p>
+								{!editing ? (
+									<div className='days value'>
+										<p className={seekerData.sunday ? 'green' : 'gray'}>Sun</p>
+										<p className={seekerData.monday ? 'green' : 'gray'}>Mon</p>
+										<p className={seekerData.tuesday ? 'green' : 'gray'}>Tue</p>
+										<p className={seekerData.wednesday ? 'green' : 'gray'}>
+											Wed
+										</p>
+										<p className={seekerData.thursday ? 'green' : 'gray'}>
+											Thu
+										</p>
+										<p className={seekerData.friday ? 'green' : 'gray'}>Fri</p>
+										<p className={seekerData.saturday ? 'green' : 'gray'}>
+											Sat
+										</p>
+									</div>
+								) : (
+									<div className='days value-edit'>
+										<p onClick={toggleChange} id='sunday' className={newSeekerData.sunday ? 'green' : 'gray'}>
+											Sun
+										</p>
+										<p onClick={toggleChange}id='monday' className={newSeekerData.monday ? 'green' : 'gray'}>
+											Mon
+										</p>
+										<p onClick={toggleChange}id='tuesday' className={newSeekerData.tuesday ? 'green' : 'gray'}>
+											Tue
+										</p>
+										<p onClick={toggleChange}id='wednesday' className={newSeekerData.wednesday ? 'green' : 'gray'}>
+											Wed
+										</p>
+										<p onClick={toggleChange}id='thursday' className={newSeekerData.thursday ? 'green' : 'gray'}>
+											Thu
+										</p>
+										<p onClick={toggleChange}id='friday' className={newSeekerData.friday ? 'green' : 'gray'}>
+											Fri
+										</p>
+										<p onClick={toggleChange}id='saturday' className={newSeekerData.saturday ? 'green' : 'gray'}>
+											Sat
+										</p>
+									</div>
+								)}
+							</div>
+							<div className='item'>
+								<p className='label'>Payrate:</p>
+								{editing ? (
+									<input
+										className='edit'
+										type='text'
+										id='payrate_desired'
+										onChange={handleChange}
+										defaultValue={seekerData.payrate_desired}></input>
+								) : (
+									<p className='value'>
+										${seekerData.payrate_desired} per hour
+									</p>
+								)}
+							</div>
+						</div>
+					)}
+					{loggedIn && userInfo && seekerData ? (
+						userInfo.username === seekerData.owner ? (
+							!editing ? (
+								<div className='single-container'>
+									<button className='edit edit-button' onClick={editSeeker}>Edit Seeker</button>
+								</div>
+								
+							) : (
+								<div className='button-container'>
+									<div className='safe-buttons'>
+										<button className='edit submit-button' onClick={updateSeeker}>
+											Update
+										</button>
+										<button className='edit cancel-button' onClick={editSeeker}>Cancel</button>
+									</div>
+									<div className='danger-button'>
+										<button className='edit delete-button' onClick={deleteSeeker}>Delete Seeker</button>
+									</div>
+								</div>
+							)
+						) : null
+					) : null}
+				</div>
+				{success ? <p className='success'>You have successfully updated your Seeker Card!</p> : null}
 			</div>
 		);
 }

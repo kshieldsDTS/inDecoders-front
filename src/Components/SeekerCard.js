@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 function SeekerCard(props) {
-	function test(){
-		console.log(props);
-	}
     return (
 		<div className='seeker-card-wrapper'>
 			<Link to={`/LFW/${props.id}`}>
