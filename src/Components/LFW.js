@@ -1,12 +1,14 @@
-import React from 'react';
-import WorkerCard from './WorkerCard';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import SeekerCard from './SeekerCard';
 import axios from 'axios';
+import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material';
 
-function LFW(props) {
+function LFW({ userInfo, loggedIn }) {
 	const [displayData, setDisplayData] = useState()
 	useEffect(() => {
-		const url = 'https://indecoders.herokuapp.com/LFWork/';
+		const url = `${URL}LFWork`;
 		(async () => {
 			try {
 				const fetchedData = await axios.get(url)
@@ -17,17 +19,22 @@ function LFW(props) {
 		})()
 	}, [])
     return (
-        <div>
+        <div className='lfw-board'>
+			{loggedIn ?
+				<Link to='/createseeker'>
+					<button className='dashboard-seeker'>Create Seeker Post</button>
+				</Link>
+				: null
+			}
 			{displayData ? 
 				displayData.map((element, i) => (
-                <WorkerCard
+                <SeekerCard
                     key={i}
                     id={element.id}
                     name={element.owner}
                     skills={element.skills}
                     email={element.email}
-                    availability={element.availability}
-                    payrate={element.payrate}
+                    payrate={element.payrate_desired}
 					sunday={element.sunday}
 					monday={element.monday}
 					tuesday={element.tuesday}
@@ -36,7 +43,7 @@ function LFW(props) {
 					friday={element.friday}
 					saturday={element.saturday}
                 />
-            )) : 'Please wait... Heroku is waking up...'}
+            )) : <CircularProgress color="secondary"/>}
         </div> 
     );
 }
