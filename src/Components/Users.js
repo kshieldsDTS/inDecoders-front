@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserCard from './UserCard'
 import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material'
 
 function User(props) {
     const [fetchedUsers, setFetchedUsers] = useState()
@@ -16,11 +17,8 @@ function User(props) {
             }
         })()
     }, [])
-    function test(){
-        console.log(fetchedUsers);
-    }
     return (
-        <div>
+        <div className='outer-user-wrapper'>
             {fetchedUsers ?
                 fetchedUsers.map((user, i) => (
                         <UserCard
@@ -42,9 +40,8 @@ function User(props) {
 						/>    
                 )) 
                 :
-                'Please wait... Heroku is waking up...'
+                <CircularProgress color='secondary'/>
             }
-            <button onClick={test}>TEST THE THING</button>
         </div>
     );
 }
