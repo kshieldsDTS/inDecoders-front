@@ -1,18 +1,20 @@
 body,
 html {
 	text-align: center;
-	background-color: #222;
+	background-color: rgb(38, 35, 53);
 	height: 100vh;
 	width: 100vw;
 	font-family: 'Roboto';
+	color: rgb(46, 225, 249);
+	z-index: 0;
 }
 a {
-	color: white;
+	color: rgb(255, 126, 219);
 	text-decoration: none;
 }
 /* Nav Bar Styling */
 .nav-wrapper {
-	background-color:  rgb(65, 65, 90);
+	background-color:  rgb(23, 21, 32);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -20,6 +22,8 @@ a {
 .header h2 {
 	margin: 20px;
 	padding: 0;
+	text-decoration: overline underline;
+	color: rgb(255, 126, 219)
 }
 .menu-button {
 	display: flex;
@@ -32,7 +36,7 @@ a {
 	display: flex;
 }
 .line {
-	background-color: white;
+	background-color: rgb(255, 126, 219);
 	width: 16px;
 	height: 5px;
 	margin-bottom: 4px;
@@ -58,7 +62,8 @@ a {
 }
 .menu {
 	position: absolute;
-	background-color: rgb(75, 75, 100);
+	background-color: rgb(36, 27, 47);
+	text-decoration: underline;
 	right: 1em;
 	top: 3.7em;
 	z-index: 1000;
@@ -66,6 +71,7 @@ a {
 	box-shadow: 3px 3px #111;
 	transition: transform 0.2s;
 	transform-origin: top center;
+	z-index: 999;
 }
 .show-menu {
 	transform: scaleY(1);
@@ -81,8 +87,9 @@ a {
 	list-style: none;
 	font-size: 1.4em;
 }
-p {
+.menu p {
 	margin: 10px;
+	color: rgb(255, 126, 219);
 }
 .show-link {
 	transform: scaleX(1);
@@ -146,11 +153,11 @@ p {
 	justify-content: center;
 }
 .dashboard {
-	background-color: lavender;
+	background-color: rgb(53, 50, 78);
 	margin: 15px;
 	padding: 15px;
 	border-radius: 10px;
-	box-shadow: 1px 1px 5px plum, -1px -1px 5px plum, 1px -1px 5px plum, -1px 1px 5px plum;
+	box-shadow: 1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219);
 }
 h1 {
 	margin: 0;
@@ -162,10 +169,12 @@ h1 {
 .dashboard-seeker {
 	margin: 5px;
 	padding: 15px;
-	background-color: lightblue;
+	background-color: rgb(53, 50, 78);
+	color:rgb(114, 241, 184);
 	border-radius: 10px;
 	font-family: 'roboto';
 	font-weight: bold;
+	border-style: groove;
 }
 .dashboard-seeker:hover {
 	animation: create-hover 1s linear infinite;
@@ -173,10 +182,12 @@ h1 {
 .dashboard-project {
 	margin: 5px;
 	padding: 15px;
-	background-color: lightblue;
+	background-color: rgb(53, 50, 78);
+	color: rgb(114, 241, 184);
 	border-radius: 10px;
 	font-family: 'roboto';
 	font-weight: bold;
+	border-style: groove;
 }
 .dashboard-project:hover {
 	animation: create-hover 1s linear infinite;
@@ -191,16 +202,15 @@ h1 {
 /* Seeker Card */
 .seeker-card-wrapper {
 	width: 80%;
-	background-color: lavender;
+	background-color: rgb(46, 44, 68);
 	border-radius: 10px;
-	box-shadow: 1px 1px 5px plum, 1px -1px 5px plum, -1px 1px 5px plum, -1px -1px 5px plum;
+	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
 	margin-top: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 .seeker-card-wrapper p{
-	color: black;
 	margin: 0;
 }
 .seeker-info {
@@ -218,12 +228,16 @@ h1 {
 	padding-bottom: 5px;
 }
 .label {
+	text-decoration: underline;
+	font-style: italic;
 	font-weight: bold;
+	color:rgb(46, 225, 249);
 }
 .value {
-	background-color: plum;
-	padding: 5px;
-	border-radius: 3px;
+	background-color: rgb(83, 80, 98);
+	padding: 7px;
+	color: rgb(114, 241, 184);
+	border-radius: 4px;
 }
 .work-info {
 	display: flex;
@@ -233,16 +247,17 @@ h1 {
 	display: flex;
 	justify-content: space-evenly;
 	padding: 5px;
+	color: black;
 }
 .green {
-	background-color: lightgreen;
+	background-color: rgb(16, 195, 219);
 	padding: 5px;
 	border-radius: 10px;
 	opacity: 1;
 	transition: opacity 0.3s, background-color 0.3s;
 }
 .gray {
-	background-color: #aaa;
+	background-color: rgb(83, 80, 98);
 	padding: 5px;
 	border-radius: 10px;
 	opacity: 0.5;
@@ -256,6 +271,7 @@ h1 {
 .edit {
 	padding: 5px;
 	border-radius: 3px;
+	color: black;
 }
 .value-edit {
 	background-color: white;
@@ -270,14 +286,14 @@ h1 {
 	animation: edit-hover 1s linear infinite;
 }
 .submit-button {
-	background-color: lightgreen;
+	background-color: rgb(114, 241, 184);
 	margin: 5px;
 }
 .submit-button:hover{
 	animation: submit-hover 1s linear infinite;
 }
 .cancel-button {
-	background-color: lightblue;
+	background-color: rgb(46, 225, 249);
 	margin: 5px;
 }
 .cancel-button:hover {
@@ -293,7 +309,7 @@ h1 {
 	animation: delete-hover 1.0s linear infinite;
 }
 .success {
-	background-color: lightgreen;
+	background-color: rgb(114, 241, 184);
 	padding: 5px;
 	border-radius: 3px;
 }
@@ -304,10 +320,12 @@ h1 {
 }
 @keyframes create-hover {
 	0% {
-		background-color: lightblue;
+		background-color: rgb(53, 50, 78);
+		color: rgb(114, 241, 184)
 	}
 	50% {
-		background-color: lightcyan;
+		background-color: rgb(83, 80, 98);
+		color: rgb(84, 211, 154)
 	}
 }
 @keyframes edit-hover {
@@ -320,25 +338,25 @@ h1 {
 }
 @keyframes submit-hover {
 	0%{
-		background-color: lightgreen;
+		background-color: rgb(114, 241, 184);
 	}
 	50%{
-		background-color: lawngreen;
+		background-color: rgb(84, 211, 154);
 	}
 }
 @keyframes cancel-hover {
 	0% {
-		background-color: lightblue;
+		background-color: rgb(46, 225, 249);
 	}
 	50% {
-		background-color: lightskyblue;
+		background-color: rgb(16, 195, 219);
 	}
 }
 @keyframes delete-hover {
 	0% {
-		background-color: red;
+		background-color: rgb(255, 0, 0);
 	}
 	50% {
-		background-color: lightpink;
+		background-color: rgb(205, 0, 0);
 	}
 }

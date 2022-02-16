@@ -22,7 +22,7 @@ function Profile({ userInfo, loggedIn }) {
                 setCurrentUserData(secondFetch.data)
             } catch (error) {}
         })()
-    }, [currentUserData])
+    }, [])
     function handleChange(ev) {
 		setNewUserData({ ...newUserData, [ev.target.id]: ev.target.value });
 		}
