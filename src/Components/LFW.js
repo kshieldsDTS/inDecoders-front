@@ -21,7 +21,7 @@ function LFW({ userInfo, loggedIn }) {
         <div>
 			{loggedIn ?
 				<Link to='/createseeker'>
-					<button>Create Seeker Post</button>
+					<button className='dashboard-seeker'>Create Seeker Post</button>
 				</Link>
 				: null
 			}

@@ -17,6 +17,7 @@ import Profile from './Components/Profile'
 import About from './Components/About';
 import axios from 'axios';
 import api_url from './apiConfig';
+import '@fontsource/roboto/300.css'
 
 function App() {
 	const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') ? true : false)
