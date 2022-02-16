@@ -168,7 +168,7 @@ h1 {
 	font-weight: bold;
 }
 .dashboard-seeker:hover {
-	background-color: lightcyan;
+	animation: create-hover 1s linear infinite;
 }
 .dashboard-project {
 	margin: 5px;
@@ -179,7 +179,7 @@ h1 {
 	font-weight: bold;
 }
 .dashboard-project:hover {
-	background-color: lightcyan;
+	animation: create-hover 1s linear infinite;
 }
 /* LFW */
 .lfw-board {
@@ -296,6 +296,19 @@ h1 {
 	background-color: lightgreen;
 	padding: 5px;
 	border-radius: 3px;
+}
+.create-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+@keyframes create-hover {
+	0% {
+		background-color: lightblue;
+	}
+	50% {
+		background-color: lightcyan;
+	}
 }
 @keyframes edit-hover {
 	0% {
