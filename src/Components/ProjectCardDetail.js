@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material';
 
 function ProjectCardDetail({ userInfo, loggedIn}) {
 	const navigate = useNavigate()
@@ -25,7 +26,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 		setNewProjectData({ ...newProjectData, [ev.target.id]: ev.target.value });
 	}
 	function toggleChange(ev) {
-		setNewProjectData({ ...newProjectData, [ev.target.id]: ev.target.checked });
+		setNewProjectData({ ...newProjectData, [ev.target.id]: !newProjectData[ev.target.id] });
 	}
 	function editProject() {
 		setEditing(!editing);
@@ -43,6 +44,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 				}
 			);
 			if (response.status === 200) {
+				setProjectData(response.data)
 				setEditing(false);
 				setSuccess(true);
 				setTimeout(() => {
@@ -64,106 +66,188 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 		} catch (error) {}
 	};
     return (
-			<div>
-				{!projectData ? (
-					'Loading card...'
-				) : !editing ? (
-					<div>
-						<p>Project Name: {projectData.project_name}</p>
-						<p>Description: {projectData.description}</p>
-						<p>Skills Desired: {projectData.skills_desired}</p>
-						<p>Availability Needed: {projectData.availability_desired}</p>
-						<p>Timeline: {projectData.timeline}</p>
-						<p>Pay Rate: ${projectData.payrate}/hour</p>
-						<p>Contact: {projectData.contact}</p>
-					</div>
-				) : (
-					<form>
-						<label>Project Name:</label>
-						<input
-							type='text'
-							id='project_name'
-							onChange={handleChange}
-							defaultValue={projectData.project_name}></input>
-						<label>Description:</label>
-						<textarea
-							rows='5'
-							cols='50'
-							id='description'
-							onChange={handleChange}
-							defaultValue={projectData.description}></textarea>
-						<label>Availability:</label>
-						<label>Sunday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='sunday'
-							defaultChecked={projectData.sunday}></input>
-						<label>Monday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='monday'
-							defaultChecked={projectData.monday}></input>
-						<label>Tuesday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='tuesday'
-							defaultChecked={projectData.tuesday}></input>
-						<label>Wednesday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='wednesday'
-							defaultChecked={projectData.wednesday}></input>
-						<label>Thursday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='thursday'
-							defaultChecked={projectData.thursday ? true : false}></input>
-						<label>Friday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='friday'
-							defaultChecked={projectData.friday}></input>
-						<label>Saturday</label>
-						<input
-							type='checkbox'
-							onChange={toggleChange}
-							id='saturday'
-							defaultChecked={projectData.saturday}></input>
-						<label>Timeline:</label>
-						<input type ='text' id='timeline' onChange={handleChange} defaultValue={projectData.timeline}></input>
-						<label>Payrate:</label>
-						<input
-							type='number'
-							id='payrate'
-							onChange={handleChange}
-							defaultValue={projectData.payrate}></input>
-					</form>
-				)}
-				{loggedIn && userInfo && projectData ? (
-					userInfo.username === projectData.owner ? (
-						!editing ? (
-							<button onClick={editProject}>Edit Seeker</button>
-						) : (
-							<div>
-								<div>
-									<button type='submit' onClick={updateProject}>Update</button>
-									<button onClick={editProject}>Cancel</button>
-								</div>
-								<div>
-									<button onClick={deleteProject}>Delete Seeker</button>
+			<div className='detail-wrapper'>
+				<div className='project-card-wrapper'>
+					{!projectData ? (
+						<CircularProgress color='secondary' />
+					) : (
+						<div className='project-card'>
+							<div className='project-info'>
+								<div className='item'>
+									<p className='label'>Project Name:</p>
+									{!editing ? (
+										<p className='value'>{projectData.project_name}</p>
+									) : (
+										<input
+											type='text'
+											id='project_name'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={projectData.project_name}></input>
+									)}
 								</div>
 							</div>
-						)
-					) : null
-				) : null}
+							<div className='project-details'>
+								<div className='item'>
+									<p className='label'>Description:</p>
+									{!editing ? (
+										<p className='value'>{projectData.description}</p>
+									) : (
+										<textarea
+											rows='5'
+											cols='50'
+											id='description'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={projectData.description}></textarea>
+									)}
+								</div>
+								<div className='item'>
+									<p className='label'>Preferred Availability:</p>
+									{!editing ? (
+										<div className='days value'>
+											<p className={projectData.sunday ? 'green' : 'gray'}>
+												Sun
+											</p>
+											<p className={projectData.monday ? 'green' : 'gray'}>
+												Mon
+											</p>
+											<p className={projectData.tuesday ? 'green' : 'gray'}>
+												Tue
+											</p>
+											<p className={projectData.wednesday ? 'green' : 'gray'}>
+												Wed
+											</p>
+											<p className={projectData.thursday ? 'green' : 'gray'}>
+												Thu
+											</p>
+											<p className={projectData.friday ? 'green' : 'gray'}>
+												Fri
+											</p>
+											<p className={projectData.saturday ? 'green' : 'gray'}>
+												Sat
+											</p>
+										</div>
+									) : (
+										<div className='days value-edit'>
+											<p
+												onClick={toggleChange}
+												id='sunday'
+												className={newProjectData.sunday ? 'green' : 'gray'}>
+												Sun
+											</p>
+											<p
+												onClick={toggleChange}
+												id='monday'
+												className={newProjectData.monday ? 'green' : 'gray'}>
+												Mon
+											</p>
+											<p
+												onClick={toggleChange}
+												id='tuesday'
+												className={newProjectData.tuesday ? 'green' : 'gray'}>
+												Tue
+											</p>
+											<p
+												onClick={toggleChange}
+												id='wednesday'
+												className={newProjectData.wednesday ? 'green' : 'gray'}>
+												Wed
+											</p>
+											<p
+												onClick={toggleChange}
+												id='thursday'
+												className={newProjectData.thursday ? 'green' : 'gray'}>
+												Thu
+											</p>
+											<p
+												onClick={toggleChange}
+												id='friday'
+												className={newProjectData.friday ? 'green' : 'gray'}>
+												Fri
+											</p>
+											<p
+												onClick={toggleChange}
+												id='saturday'
+												className={newProjectData.saturday ? 'green' : 'gray'}>
+												Sat
+											</p>
+										</div>
+									)}
+								</div>
+								<div className='item'>
+									<p className='label'>Timeline:</p>
+									{!editing ? (
+										<p className='value'>{projectData.timeline}</p>
+									) : (
+										<input
+											type='text'
+											id='timeline'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={projectData.timeline}></input>
+									)}
+								</div>
+							</div>
+							<div className='project-info'>
+								<div className='item'>
+									<p className='label'>Contact:</p>
+									<p className='value'>{projectData.contact}</p>
+								</div>
+								<div className='item'>
+									<p className='label'>Payrate:</p>
+									{!editing ? (
+										<p className='value'>${projectData.payrate} per hour</p>
+									) : (
+										<input
+											type='text'
+											id='payrate'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={projectData.payrate}></input>
+									)}
+								</div>
+							</div>
+						</div>
+					)}
+					{loggedIn && userInfo && projectData ? (
+						userInfo.username === projectData.owner ? (
+							!editing ? (
+								<div className='single-container'>
+									<button className='edit edit-button' onClick={editProject}>
+										Edit Seeker
+									</button>
+								</div>
+							) : (
+								<div className='button-container'>
+									<div className='safe-buttons'>
+										<button
+											className='edit submit-button'
+											onClick={updateProject}>
+											Update
+										</button>
+										<button
+											className='edit cancel-button'
+											onClick={editProject}>
+											Cancel
+										</button>
+									</div>
+									<div className='danger-button'>
+										<button
+											className='edit delete-button'
+											onClick={deleteProject}>
+											Delete Seeker
+										</button>
+									</div>
+								</div>
+							)
+						) : null
+					) : null}
+				</div>
 				{success ? (
-					<p>You have successfully updated your Seeker Post!</p>
+					<p className='success'>
+						You have successfully updated your Seeker Card!
+					</p>
 				) : null}
 			</div>
 		);

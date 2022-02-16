@@ -40,6 +40,7 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 				},
 			});
 			if (response.status === 200){
+				setSeekerData(response.data)
 				setEditing(false)
 				setSuccess(true)
 				setTimeout(() => {

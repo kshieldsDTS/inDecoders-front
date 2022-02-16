@@ -17,7 +17,7 @@ const blankData = {
     timeline: '',
     payrate: 0,
 }
-function CreateProject(props) {
+function CreateProject({ userInfo }) {
     const navigate = useNavigate()
     const [postData, setPostData] = useState(blankData)
     const [success, setSuccess] = useState(false)
@@ -43,44 +43,95 @@ function CreateProject(props) {
 			} catch (error) {}
 		};
     return (
-			<div>
-				<form>
-					<label>Project Name:</label>
-					<input type='text' id='project_name' onChange={handleChange}></input>
-					<label>Description:</label>
-					<input type='text' id='description' onChange={handleChange}></input>
-					<label>Skills Needed:</label>
-					<input
-						type='text'
-						id='skills_desired'
-						onChange={handleChange}></input>
-					<label>Timeline:</label>
-					<input type='text' id='timeline' onChange={handleChange}></input>
-					<label>Availability:</label>
-					<label>Sunday</label>
-					<input type='checkbox' onClick={toggleChange} id='sunday'></input>
-					<label>Monday</label>
-					<input type='checkbox' onClick={toggleChange} id='monday'></input>
-					<label>Tuesday</label>
-					<input type='checkbox' onClick={toggleChange} id='tuesday'></input>
-					<label>Wednesday</label>
-					<input type='checkbox' onClick={toggleChange} id='wednesday'></input>
-					<label>Thursday</label>
-					<input type='checkbox' onClick={toggleChange} id='thursday'></input>
-					<label>Friday</label>
-					<input type='checkbox' onClick={toggleChange} id='friday'></input>
-					<label>Saturday</label>
-					<input type='checkbox' onClick={toggleChange} id='saturday'></input>
-					<label>Payrate</label>
-					<input type='number' id='payrate' onChange={handleChange}></input>
+			<div className='create-wrapper'>
+				<form className='seeker-card-wrapper'>
+					<div className='seeker-card'>
+						<div className='seeker-info'>
+							<div className='item'>
+								<label className='label'>Username:</label>
+								<p className='value'>{userInfo.username}</p>
+							</div>
+							<div className='item'>
+								<label className='label'>Email:</label>
+								<p className='value'>{userInfo.email}</p>
+							</div>
+						</div>
+						<div className='work-info'>
+							<div className='item'>
+								<label className='label'>Skills:</label>
+								<input
+									className='edit'
+									type='text'
+									id='skills'
+									onChange={handleChange}></input>
+							</div>
+							<div className='item'>
+								<label className='label'>Availability:</label>
+								<div className='days value-edit'>
+									<p
+										onClick={toggleChange}
+										id='sunday'
+										className={postData.sunday ? 'green' : 'gray'}>
+										Sun
+									</p>
+									<p
+										onClick={toggleChange}
+										id='monday'
+										className={postData.monday ? 'green' : 'gray'}>
+										Mon
+									</p>
+									<p
+										onClick={toggleChange}
+										id='tuesday'
+										className={postData.tuesday ? 'green' : 'gray'}>
+										Tue
+									</p>
+									<p
+										onClick={toggleChange}
+										id='wednesday'
+										className={postData.wednesday ? 'green' : 'gray'}>
+										Wed
+									</p>
+									<p
+										onClick={toggleChange}
+										id='thursday'
+										className={postData.thursday ? 'green' : 'gray'}>
+										Thu
+									</p>
+									<p
+										onClick={toggleChange}
+										id='friday'
+										className={postData.friday ? 'green' : 'gray'}>
+										Fri
+									</p>
+									<p
+										onClick={toggleChange}
+										id='saturday'
+										className={postData.saturday ? 'green' : 'gray'}>
+										Sat
+									</p>
+								</div>
+								<div className='item'>
+									<label className='label'>Pay/Hour:</label>
+									<input
+										className='edit'
+										type='number'
+										onChange={handleChange}
+										id='payrate_desired'></input>
+								</div>
+							</div>
+						</div>
+					</div>
 				</form>
 				{success ? (
-					<p>
-						Your post has been created successfully. Redirecting you to your new
-						post.
+					<p className='success'>
+						Your Seeker has been created successfully. Redirecting you to your
+						Seeker.
 					</p>
 				) : (
-					<button onClick={postProject}>Post It</button>
+					<button className='edit submit-button' onClick={postProject}>
+						Post It
+					</button>
 				)}
 			</div>
 		);
