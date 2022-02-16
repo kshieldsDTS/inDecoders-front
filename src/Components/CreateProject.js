@@ -25,7 +25,7 @@ function CreateProject({ userInfo }) {
 	    setPostData({ ...postData, [ev.target.id]: ev.target.value });
     }
     function toggleChange(ev) {
-	    setPostData({ ...postData, [ev.target.id]: ev.target.checked });
+	    setPostData({ ...postData, [ev.target.id]: !postData[ev.target.id]});
     }
     const postProject = async () => {
 			try {
@@ -44,9 +44,9 @@ function CreateProject({ userInfo }) {
 		};
     return (
 			<div className='create-wrapper'>
-				<form className='seeker-card-wrapper'>
-					<div className='seeker-card'>
-						<div className='seeker-info'>
+				<form className='project-card-wrapper'>
+					<div className='project-card'>
+						<div className='project-info'>
 							<div className='item'>
 								<label className='label'>Username:</label>
 								<p className='value'>{userInfo.username}</p>
@@ -56,9 +56,9 @@ function CreateProject({ userInfo }) {
 								<p className='value'>{userInfo.email}</p>
 							</div>
 						</div>
-						<div className='work-info'>
+						<div className='project-details'>
 							<div className='item'>
-								<label className='label'>Skills:</label>
+								<label className='label'>Project Name:</label>
 								<input
 									className='edit'
 									type='text'
@@ -66,7 +66,16 @@ function CreateProject({ userInfo }) {
 									onChange={handleChange}></input>
 							</div>
 							<div className='item'>
-								<label className='label'>Availability:</label>
+								<label className='label'>Description:</label>
+								<textarea
+									rows='5'
+									cols='40'
+									id='description'
+									className='edit'
+									onChange={handleChange}/>
+							</div>
+							<div className='item'>
+								<label className='label'>Preferred Availability:</label>
 								<div className='days value-edit'>
 									<p
 										onClick={toggleChange}
@@ -112,12 +121,22 @@ function CreateProject({ userInfo }) {
 									</p>
 								</div>
 								<div className='item'>
+									<label className='label'>
+										Timeline:
+									</label>
+									<input 
+									className='edit'
+									type='text'
+									id='timeline'
+									onChange={handleChange}/>
+								</div>
+								<div className='item'>
 									<label className='label'>Pay/Hour:</label>
 									<input
 										className='edit'
 										type='number'
 										onChange={handleChange}
-										id='payrate_desired'></input>
+										id='payrate'></input>
 								</div>
 							</div>
 						</div>
@@ -125,8 +144,8 @@ function CreateProject({ userInfo }) {
 				</form>
 				{success ? (
 					<p className='success'>
-						Your Seeker has been created successfully. Redirecting you to your
-						Seeker.
+						Your Project has been created successfully. Redirecting you to your
+						Project.
 					</p>
 				) : (
 					<button className='edit submit-button' onClick={postProject}>

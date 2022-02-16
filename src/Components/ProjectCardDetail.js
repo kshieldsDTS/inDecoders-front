@@ -95,7 +95,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 									) : (
 										<textarea
 											rows='5'
-											cols='50'
+											cols='40'
 											id='description'
 											className='edit'
 											onChange={handleChange}
@@ -246,7 +246,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 				</div>
 				{success ? (
 					<p className='success'>
-						You have successfully updated your Seeker Card!
+						You have successfully updated your Project Card!
 					</p>
 				) : null}
 			</div>
