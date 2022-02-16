@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeekerCard from './SeekerCard';
 import axios from 'axios';
 import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material';
 
 function LFW({ userInfo, loggedIn }) {
 	const [displayData, setDisplayData] = useState()
@@ -18,7 +19,7 @@ function LFW({ userInfo, loggedIn }) {
 		})()
 	}, [])
     return (
-        <div>
+        <div className='lfw-board'>
 			{loggedIn ?
 				<Link to='/createseeker'>
 					<button className='dashboard-seeker'>Create Seeker Post</button>
@@ -33,8 +34,7 @@ function LFW({ userInfo, loggedIn }) {
                     name={element.owner}
                     skills={element.skills}
                     email={element.email}
-                    availability={element.availability}
-                    payrate={element.payrate}
+                    payrate={element.payrate_desired}
 					sunday={element.sunday}
 					monday={element.monday}
 					tuesday={element.tuesday}
@@ -43,7 +43,7 @@ function LFW({ userInfo, loggedIn }) {
 					friday={element.friday}
 					saturday={element.saturday}
                 />
-            )) : 'Please wait... Heroku is waking up...'}
+            )) : <CircularProgress color="secondary"/>}
         </div> 
     );
 }

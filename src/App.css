@@ -182,3 +182,63 @@ h1 {
 .dashboard-project:hover {
 	background-color: lightcyan;
 }
+/* LFW */
+.lfw-board {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* Seeker Card */
+.seeker-card-wrapper {
+	width: 80%;
+	background-color: lavender;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px plum, 1px -1px 5px plum, -1px 1px 5px plum, -1px -1px 5px plum;
+	margin-bottom: 10px;
+}
+.seeker-card-wrapper p{
+	color: black;
+	margin: 0;
+}
+.seeker-info {
+	display: flex;
+	justify-content: space-between;
+}
+.item {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	margin: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.label {
+	font-weight: bold;
+}
+.value {
+	background-color: plum;
+	padding: 5px;
+	border-radius: 3px;
+}
+.work-info {
+	display: flex;
+	flex-direction: column;
+}
+.days {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 5px;
+}
+.green {
+	background-color: lightgreen;
+	padding: 5px;
+	border-radius: 10px;
+}
+.gray {
+	background-color: #aaa;
+	padding: 5px;
+	border-radius: 10px;
+}
