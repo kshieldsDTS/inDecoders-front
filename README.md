@@ -9,7 +9,7 @@ inDecoders is a job board for video game developers, coders, animators, and desi
 
 ### This Repo:
 
-This repository serves as the basis for the inDesign's front end, utilizing React, JavaScript, and Material UI.
+This repository serves as the basis for the inDecoders' front end, utilizing React, JavaScript, and Material UI.
 
 ### Front-End:
 HTML, CSS, JavaScript, React, Material UI
