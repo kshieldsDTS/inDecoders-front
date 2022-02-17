@@ -41,22 +41,61 @@ function NewUser(props) {
     return (
 			<div>
 				<h2>Create a new inDecoders account!</h2>
-				<form>
-					<label>Username</label>	
-                    <input type='text' id='username' onChange={handleChange}></input>
-					<label>Email</label>
-					<input type='text' id='email' onChange={handleChange}></input>
-					<label>Password</label>
-					<input type='password' id='password' onChange={handleChange} autoComplete='on'></input>
-					<label>Confirm Password</label>
-					<input type='password' id='re_password' onChange={handleChange} onBlur={handlePasswordMatch} autoComplete='on'></input>
-                    {!error ? null : 'Passwords do not match!'}
-                    <button type='submit' onClick={handleSubmit}>Sign Up!</button>
-                    {success ? 
-                        <p>
-                            You have successfully created an account with inDecoders. You will be automatically be redirected to log in. If you are not autimatically redirected, please click <Link to='/login'>here.</Link>
-                        </p> : null}
-				</form>
+				<div className='outer-user-wrapper'>
+					<div className='user-card-wrapper'>
+						<form className='user-card'>
+							<div className='user-detail'>
+								<div className='item'>
+									<label className='label'>Username:</label>
+									<input
+										type='text'
+										className='edit'
+										id='username'
+										onChange={handleChange}></input>
+								</div>
+								<div className='item'>
+									<label className='label'>Email</label>
+									<input
+										type='text'
+										className='edit'
+										id='email'
+										onChange={handleChange}></input>
+								</div>
+								<div className='item'>
+									<label className='label'>Password</label>
+									<input
+										type='password'
+										id='password'
+										className='edit'
+										onChange={handleChange}
+										autoComplete='on'></input>
+								</div>
+								<div className='item'>
+									<label className='label'>Confirm Password</label>
+									<input
+										type='password'
+										id='re_password'
+                                        className='edit'
+										onChange={handleChange}
+										onBlur={handlePasswordMatch}
+										autoComplete='on'></input>
+								</div>
+							</div>
+							{!error ? null : 'Passwords do not match!'}
+							<button className='dashboard-seeker' type='submit' onClick={handleSubmit}>
+								Sign Up!
+							</button>
+							{success ? (
+								<p>
+									You have successfully created an account with inDecoders. You
+									will be automatically be redirected to log in. If you are not
+									automatically redirected, please click{' '}
+									<Link to='/login'>here.</Link>
+								</p>
+							) : null}
+						</form>
+					</div>
+				</div>
 			</div>
 		);
 }

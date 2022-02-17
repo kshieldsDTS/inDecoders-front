@@ -38,8 +38,8 @@ function Profile({ userInfo, loggedIn }) {
                     Authorization: `Token ${localStorage.getItem('token')}`,
                 }
             })
-            console.log(response);
             if (response.status === 200) {
+				setCurrentUserData(response.data)
                 setEditing(false)
                 setSuccess(true)
                 setTimeout(() => {
@@ -60,9 +60,6 @@ function Profile({ userInfo, loggedIn }) {
                 localStorage.clear()
                 navigate('/')
         } catch (error)  {}
-    }
-    function test (){
-        console.log(newUserData);
     }
     return (
 			<div className='detail-wrapper'>
@@ -123,14 +120,14 @@ function Profile({ userInfo, loggedIn }) {
 									) : (
 										<input
 											type='text'
-											id='skills'
+											id='portfolio'
 											className='edit'
 											onChange={handleChange}
-											defaultValue={currentUserData.skills}></input>
+											defaultValue={currentUserData.portfolio}></input>
 									)}
 								</div>
 								<div className='item'>
-									<p className='label'>Payrate:</p>
+									<p className='label'>Pay Rate:</p>
 									{!editing ? (
 										<p className='value'>${currentUserData.payrate} per hour</p>
 									) : (
@@ -148,30 +145,30 @@ function Profile({ userInfo, loggedIn }) {
 									!editing ? (
 										<div className='single-container'>
 											<button
-												className='edit edit-button'
+												className='dashboard-seeker '
 												onClick={editProfile}>
-												Edit Seeker
+												Edit Profile
 											</button>
 										</div>
 									) : (
 										<div className='button-container'>
 											<div className='safe-buttons'>
 												<button
-													className='edit submit-button'
+													className='dashboard-seeker submit-button'
 													onClick={updateProfile}>
 													Update
 												</button>
 												<button
-													className='edit cancel-button'
+													className='dashboard-seeker cancel-button'
 													onClick={editProfile}>
 													Cancel
 												</button>
 											</div>
 											<div className='danger-button'>
 												<button
-													className='edit delete-button'
+													className='dashboard-seeker delete-button'
 													onClick={deleteProfile}>
-													Delete Seeker
+													Delete Profile
 												</button>
 											</div>
 										</div>

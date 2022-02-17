@@ -43,7 +43,7 @@ function CreateSeeker({ userInfo }) {
 			<div className='create-wrapper'>
 				<form className='seeker-card-wrapper'>
 					<div className='seeker-card'>
-                        <div className='seeker-info'>
+                        <div className='seeker-detail'>
                             <div className='item'>
                                 <label className='label'>Username:</label>
                                 <p className='value'>{userInfo.username}</p>
@@ -109,7 +109,7 @@ function CreateSeeker({ userInfo }) {
 								</p>
 							</div>
                             <div className='item'>
-                                <label className='label'>Pay/Hour:</label>
+                                <label className='label'>Pay Rate:</label>
                                 <input className='edit'
 							        type='number'
 							        onChange={handleChange}
@@ -124,7 +124,7 @@ function CreateSeeker({ userInfo }) {
 					Your Seeker has been created successfully. Redirecting you to your Seeker.
 	    		</p>
 			) : (
-				<button className='edit submit-button'onClick={postSeeker}>Post It</button>
+				<button className='dashboard-seeker'onClick={postSeeker}>Post It</button>
 			)}
 		</div>
 		);

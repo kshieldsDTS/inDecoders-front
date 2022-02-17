@@ -195,7 +195,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 									<p className='value'>{projectData.contact}</p>
 								</div>
 								<div className='item'>
-									<p className='label'>Payrate:</p>
+									<p className='label'>Pay Rate:</p>
 									{!editing ? (
 										<p className='value'>${projectData.payrate} per hour</p>
 									) : (
@@ -214,7 +214,7 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 						userInfo.username === projectData.owner ? (
 							!editing ? (
 								<div className='single-container'>
-									<button className='edit edit-button' onClick={editProject}>
+									<button className='dashboard-seeker' onClick={editProject}>
 										Edit Seeker
 									</button>
 								</div>
@@ -222,19 +222,19 @@ function ProjectCardDetail({ userInfo, loggedIn}) {
 								<div className='button-container'>
 									<div className='safe-buttons'>
 										<button
-											className='edit submit-button'
+											className='dashboard-seeker submit-button'
 											onClick={updateProject}>
 											Update
 										</button>
 										<button
-											className='edit cancel-button'
+											className='dashboard-seeker cancel-button'
 											onClick={editProject}>
 											Cancel
 										</button>
 									</div>
 									<div className='danger-button'>
 										<button
-											className='edit delete-button'
+											className='dashboard-seeker delete-button'
 											onClick={deleteProject}>
 											Delete Seeker
 										</button>

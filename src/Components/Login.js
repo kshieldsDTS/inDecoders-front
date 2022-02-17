@@ -15,24 +15,38 @@ function Login({ handleSetLoggedIn }) {
     }
     const sendData = async() => {
         const response = await axios.post(`${URL}token/login/`, formData)
-        console.log(response);
         if (response.status === 200) {
             handleSetLoggedIn(response.data.auth_token);
             navigate('/')
         }
     }
     return (
-        <div>
-            <form>
-                <legend>Email:</legend>
-                <input type='text' id='email' onChange={handleChange} required></input>
-                <legend>Password:</legend>
-                <input type='password' id='password' onChange={handleChange} required autoComplete='auto'></input>
-                <br/>
-                <button type='submit' onClick={submitForm}>Submit</button>
-            </form>
-        </div>
-    );
+			<div className='outer-user-wrapper'>
+				<div className='user-card-wrapper'>
+					<form className='user-card'>
+						<legend className='label'>Email:</legend>
+						<input
+							type='text'
+							id='email'
+                            className='edit'
+							onChange={handleChange}
+							required></input>
+						<legend className='label'>Password:</legend>
+						<input
+							type='password'
+							id='password'
+                            className='edit'
+							onChange={handleChange}
+							required
+							autoComplete='auto'></input>
+						<br />
+						<button className='dashboard-seeker submit-button' type='submit' onClick={submitForm}>
+							Submit
+						</button>
+					</form>
+				</div>
+			</div>
+		);
 }
 
 export default Login;

@@ -68,7 +68,7 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 						<CircularProgress color='secondary' />
 					) : (
 						<div className='seeker-card'>
-							<div className='seeker-info'>
+							<div className='seeker-detail'>
 								<div className='item'>
 									<p className='label'>Name:</p>
 									<p className='value'>{seekerData.owner}</p>
@@ -138,7 +138,7 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 								)}
 							</div>
 							<div className='item'>
-								<p className='label'>Payrate:</p>
+								<p className='label'>Pay Rate:</p>
 								{editing ? (
 									<input
 										className='edit'
@@ -158,19 +158,19 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 						userInfo.username === seekerData.owner ? (
 							!editing ? (
 								<div className='single-container'>
-									<button className='edit edit-button' onClick={editSeeker}>Edit Seeker</button>
+									<button className='dashboard-seeker' onClick={editSeeker}>Edit Seeker</button>
 								</div>
 								
 							) : (
 								<div className='button-container'>
 									<div className='safe-buttons'>
-										<button className='edit submit-button' onClick={updateSeeker}>
+										<button className='dashboard-seeker submit-button' onClick={updateSeeker}>
 											Update
 										</button>
-										<button className='edit cancel-button' onClick={editSeeker}>Cancel</button>
+										<button className='dashboard-seeker cancel-button' onClick={editSeeker}>Cancel</button>
 									</div>
 									<div className='danger-button'>
-										<button className='edit delete-button' onClick={deleteSeeker}>Delete Seeker</button>
+										<button className='dashboard-seeker delete-button' onClick={deleteSeeker}>Delete Seeker</button>
 									</div>
 								</div>
 							)
