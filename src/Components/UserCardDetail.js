@@ -18,7 +18,7 @@ function UserCardDetail({ userInfo, loggedIn }) {
                 setUserData(fetchedData.data)
             } catch (error) {}
         })();
-    }, [id, navigate, userInfo.id]);
+    });
 	return (
 		<div className='detail-wrapper'>
 			<div className='user-card-wrapper'>
@@ -46,18 +46,6 @@ function UserCardDetail({ userInfo, loggedIn }) {
 							<div className='item'>
 								<p className='label'>Portfolio:</p>
 								<p className='value'>{userData.portfolio}</p>
-							</div>
-							<div className='item'>
-								<p className='label'>Availability</p>
-								<div className='days value'>
-									<p className={userData.sunday ? 'green' : 'gray'}>Sun</p>
-									<p className={userData.monday ? 'green' : 'gray'}>Mon</p>
-									<p className={userData.tuesday ? 'green' : 'gray'}>Tue</p>
-									<p className={userData.wednesday ? 'green' : 'gray'}>Wed</p>
-									<p className={userData.thursday ? 'green' : 'gray'}>Thu</p>
-									<p className={userData.friday ? 'green' : 'gray'}>Fri</p>
-									<p className={userData.saturday ? 'green' : 'gray'}>Sat</p>
-								</div>
 							</div>
                             <div className='item'>
                                 <p className='label'>

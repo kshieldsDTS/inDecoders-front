@@ -61,9 +61,6 @@ function Profile({ userInfo, loggedIn }) {
                 navigate('/')
         } catch (error)  {}
     }
-    function test (){
-        console.log(newUserData);
-    }
     return (
 			<div className='detail-wrapper'>
 				<div className='user-card-wrapper'>

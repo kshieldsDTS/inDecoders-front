@@ -21,18 +21,6 @@ function UserCard(props) {
 								<p className='label'>Skills:</p>
 								<p className='value'>{props.skills}</p>
 							</div>
-							<div className='item'>
-								<p className='label'>Availability:</p>
-								<div className='days value'>
-									<p className={props.sunday ? 'green' : 'gray'}>Sun</p>
-									<p className={props.monday ? 'green' : 'gray'}>Mon</p>
-									<p className={props.tuesday ? 'green' : 'gray'}>Tue</p>
-									<p className={props.wednesday ? 'green' : 'gray'}>Wed</p>
-									<p className={props.thursday ? 'green' : 'gray'}>Thu</p>
-									<p className={props.friday ? 'green' : 'gray'}>Fri</p>
-									<p className={props.saturday ? 'green' : 'gray'}>Sat</p>
-								</div>
-							</div>
                             <div className='item'>
                                 <p className='label'>Payrate:</p>
                                 <p className='value'>${props.payrate} per hour</p>

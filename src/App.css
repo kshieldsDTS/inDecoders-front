@@ -338,7 +338,7 @@ h1 {
 	align-items: center;
 }
 .lfh-board {
-	width: 90vw;
+	width: 100vw;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -438,4 +438,8 @@ h1 {
 	50% {
 		background-color: rgb(205, 0, 0);
 	}
+}
+
+@media (min-width: 720px) {
+	
 }
