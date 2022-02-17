@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import URL from '../apiConfig';
 import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
 function Profile({ userInfo, loggedIn }) {
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ function Profile({ userInfo, loggedIn }) {
     }, [])
     function handleChange(ev) {
 		setNewUserData({ ...newUserData, [ev.target.id]: ev.target.value });
-		}
+	}
     function editProfile(){
         setEditing(!editing)
         setNewUserData(currentUserData)
@@ -64,81 +65,127 @@ function Profile({ userInfo, loggedIn }) {
         console.log(newUserData);
     }
     return (
-        <div>
-        {!currentUserData ? (
-            'Loading profile...' 
-        ) : !editing ? (
-            <div>
-                <p>Username: {currentUserData.username}</p>
-                <p>Email: {currentUserData.email}</p>
-                <p>Skills: {currentUserData.skills}</p>
-                <p>About: {currentUserData.bio}</p>
-                <p>Portfolio: {currentUserData.portfolio}</p>
-                <p>Preferred Pay Rate: ${currentUserData.payrate}/hour</p>
-            </div>
-        ) : (
-            <div>
-                <label>Username:</label>
-                <input
-                    type='text'
-                    id='username'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.username}></input>
-                <label>Email:</label>
-                <input
-                    type='email'
-                    id='email'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.email}></input>
-                <label>Skills:</label>
-                <input 
-                    type='text'
-                    id='skills'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.skills}></input>
-                <label>About:</label>
-                <textarea
-                    type='text'
-                    id='bio'
-                    rows='5'
-                    cols='50'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.bio}></textarea>
-                <label>Portfolio:</label>
-                <input
-                    type='url'
-                    id='portfolio'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.portfolio}></input>
-                <label>Preferred Pay Rate:</label>
-                <input
-                    type='number'
-                    id='payrate'
-                    onChange={handleChange}
-                    defaultValue={currentUserData.payrate}></input>
-            </div>
-        )}
-        {userInfo && currentUserData && loggedIn ? (
-            userInfo.username === currentUserData.username ? (
-                !editing ? (
-                    <button onClick={editProfile}>Edit Profile</button>
-                ) : ( 
-                    <div>
-                        <div>
-                            <button onClick={updateProfile}>Update</button>
-                            <button onClick={editProfile}>Cancel</button>
-                        </div>
-                        <div>
-                            <button onClick={deleteProfile}>Delete</button>
-                        </div>
-                    </div>
-                )
-            ) : null
-        ) : null }
-        <button onClick={test}>Test</button>
-        {success ? <p>You have successfully updated your Profile!</p> : null }
-        </div>
-    );
+			<div className='detail-wrapper'>
+				<div className='user-card-wrapper'>
+					{currentUserData ? (
+						<div className='user-card'>
+							<div className='user-info'>
+								<div className='item'>
+									<p className='label'>Username:</p>
+									<p className='value'>{currentUserData.username}</p>
+								</div>
+								<div className='item'>
+									<p className='label'>Email:</p>
+									{!editing ? (
+										<p className='value'>{currentUserData.email}</p>
+									) : (
+										<input
+											type='text'
+											id='email'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={currentUserData.email}></input>
+									)}
+								</div>
+							</div>
+							<div className='user-detail'>
+								<div className='item'>
+									<p className='label'>Skills:</p>
+									{!editing ? (
+										<p className='value'>{currentUserData.skills}</p>
+									) : (
+										<input
+											type='text'
+											id='skills'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={currentUserData.skills}></input>
+									)}
+								</div>
+								<div className='item'>
+									<p className='label'>About:</p>
+									{!editing ? (
+										<p className='value'>{currentUserData.bio}</p>
+									) : (
+										<textarea
+											rows='5'
+											cols='40'
+											id='bio'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={currentUserData.bio}></textarea>
+									)}
+								</div>
+								<div className='item'>
+									<p className='label'>Portfolio:</p>
+									{!editing ? (
+										<p className='value'>{currentUserData.portfolio}</p>
+									) : (
+										<input
+											type='text'
+											id='skills'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={currentUserData.skills}></input>
+									)}
+								</div>
+								<div className='item'>
+									<p className='label'>Payrate:</p>
+									{!editing ? (
+										<p className='value'>${currentUserData.payrate} per hour</p>
+									) : (
+										<input
+											type='text'
+											id='payrate'
+											className='edit'
+											onChange={handleChange}
+											defaultValue={currentUserData.payrate}></input>
+									)}
+								</div>
+							</div>
+							{loggedIn && userInfo && currentUserData ? (
+								userInfo.username === currentUserData.username ? (
+									!editing ? (
+										<div className='single-container'>
+											<button
+												className='edit edit-button'
+												onClick={editProfile}>
+												Edit Seeker
+											</button>
+										</div>
+									) : (
+										<div className='button-container'>
+											<div className='safe-buttons'>
+												<button
+													className='edit submit-button'
+													onClick={updateProfile}>
+													Update
+												</button>
+												<button
+													className='edit cancel-button'
+													onClick={editProfile}>
+													Cancel
+												</button>
+											</div>
+											<div className='danger-button'>
+												<button
+													className='edit delete-button'
+													onClick={deleteProfile}>
+													Delete Seeker
+												</button>
+											</div>
+										</div>
+									)
+								) : null
+							) : null}
+						</div>
+					) : (
+						<CircularProgress color='secondary' />
+					)}
+				</div>
+				{success ? <p>You have successfully updated your Profile!</p> : null}
+			</div>
+		);
 }
 
 export default Profile;

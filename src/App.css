@@ -206,7 +206,7 @@ h1 {
 }
 /* Seeker Card */
 .seeker-card-wrapper {
-	width: 80%;
+	width: 90%;
 	background-color: rgb(46, 44, 68);
 	border-radius: 10px;
 	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
@@ -346,6 +346,7 @@ h1 {
 	align-items: stretch;
 }
 .project-card-wrapper {
+	width: 90%;
 	background-color: rgb(46, 44, 68);
 	border-radius: 10px;
 	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
