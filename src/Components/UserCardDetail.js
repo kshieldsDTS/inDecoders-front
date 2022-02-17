@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import URL from '../apiConfig';
 import { CircularProgress } from '@mui/material';
 
 function UserCardDetail({ userInfo, loggedIn }) {
-    const navigate = useNavigate();
 	const params = useParams();
 	const id = params.id;
 	const [userData, setUserData] = useState();
