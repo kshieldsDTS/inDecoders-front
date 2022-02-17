@@ -23,7 +23,7 @@ function Dashboard({ userInfo, loggedIn }) {
                         </Link>
                     </div> 
                 :
-                    null
+                    <h2>Please {<Link className='dashlink' to='/login'>log in</Link>} or {<Link className='dashlink' to='/signup'>sign up</Link>} to get started!</h2>
                 }
         </div>
     );

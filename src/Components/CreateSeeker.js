@@ -63,7 +63,7 @@ function CreateSeeker({ userInfo }) {
 								    onChange={handleChange}></input>
 						    </div>
                             <div className='item'>
-							    <label>Availability:</label>
+							    <label className='label'>Availability:</label>
 							    <div className='days value-edit'>
 								    <p
 									onClick={toggleChange}

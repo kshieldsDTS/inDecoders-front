@@ -18,12 +18,13 @@ function LFH({ userInfo, loggedIn }) {
 		})()
 	}, [])
     return (
-			<div>
-				{loggedIn ? (
+		<div className='outer-wrapper'>
+			{loggedIn ? (
 					<Link to='/createproject'>
-						<button>Create Project Post</button>
+						<button className='dashboard-seeker'>Create Project Post</button>
 					</Link>
 				) : null}
+			<div className='lfh-board'>
 				{fetchedProjects
 					? fetchedProjects.map((element, i) => (
 							<ProjectCard
@@ -47,6 +48,7 @@ function LFH({ userInfo, loggedIn }) {
 					  ))
 					: 'Please wait... Heroku is waking up...'}
 			</div>
+		</div>
 		);
 }
 
