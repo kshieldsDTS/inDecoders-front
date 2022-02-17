@@ -19,33 +19,38 @@ function LFW({ userInfo, loggedIn }) {
 		})()
 	}, [])
     return (
-        <div className='lfw-board'>
-			{loggedIn ?
-				<Link to='/createseeker'>
-					<button className='dashboard-seeker'>Create Seeker Post</button>
-				</Link>
-				: null
-			}
-			{displayData ? 
-				displayData.map((element, i) => (
-                <SeekerCard
-                    key={i}
-                    id={element.id}
-                    name={element.owner}
-                    skills={element.skills}
-                    email={element.email}
-                    payrate={element.payrate_desired}
-					sunday={element.sunday}
-					monday={element.monday}
-					tuesday={element.tuesday}
-					wednesday={element.wednesday}
-					thursday={element.thursday}
-					friday={element.friday}
-					saturday={element.saturday}
-                />
-            )) : <CircularProgress color="secondary"/>}
-        </div> 
-    );
+			<div className='lfw-board'>
+				{loggedIn ? (
+					<Link to='/createseeker'>
+						<button className='dashboard-seeker'>Create Seeker Post</button>
+					</Link>
+				) : null}
+				{displayData ? (
+					displayData.map((element, i) => (
+						<SeekerCard
+							key={i}
+							id={element.id}
+							name={element.owner}
+							skills={element.skills}
+							email={element.email}
+							payrate={element.payrate_desired}
+							sunday={element.sunday}
+							monday={element.monday}
+							tuesday={element.tuesday}
+							wednesday={element.wednesday}
+							thursday={element.thursday}
+							friday={element.friday}
+							saturday={element.saturday}
+						/>
+					))
+				) : (
+					<div>
+						<h2>Please stand by while data is being loaded...</h2>
+						<CircularProgress color='secondary' />
+					</div>
+				)}
+			</div>
+		);
 }
 
 export default LFW;

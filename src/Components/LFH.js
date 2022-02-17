@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCard'
 import axios from 'axios';
 import URL from '../apiConfig';
+import { CircularProgress } from '@mui/material';
 
 function LFH({ userInfo, loggedIn }) {
 	const [fetchedProjects, setFetchedProjects] = useState()
@@ -46,7 +47,11 @@ function LFH({ userInfo, loggedIn }) {
 								contact={element.contact}
 							/>
 					  ))
-					: 'Please wait... Heroku is waking up...'}
+					: 
+						<div>
+							<h2>Please stand by while data is being loaded...</h2>
+						<CircularProgress color='secondary'/>
+						</div>}
 			</div>
 		</div>
 		);

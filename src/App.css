@@ -403,6 +403,9 @@ h1 {
 	display: flex;
 	flex-direction: column;	
 }
+.error {
+	color: red;
+}
 @keyframes create-hover {
 	0% {
 		background-color: rgb(53, 50, 78);

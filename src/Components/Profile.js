@@ -177,7 +177,10 @@ function Profile({ userInfo, loggedIn }) {
 							) : null}
 						</div>
 					) : (
-						<CircularProgress color='secondary' />
+						<div>
+							<h2>Please stand by while data is being loaded...</h2>
+							<CircularProgress color='secondary' />
+						</div>
 					)}
 				</div>
 				{success ? <p>You have successfully updated your Profile!</p> : null}

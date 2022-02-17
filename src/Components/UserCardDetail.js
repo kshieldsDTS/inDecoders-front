@@ -47,18 +47,17 @@ function UserCardDetail({ userInfo, loggedIn }) {
 								<p className='label'>Portfolio:</p>
 								<p className='value'>{userData.portfolio}</p>
 							</div>
-                            <div className='item'>
-                                <p className='label'>
-                                    Pay Rate:
-                                </p>
-                                <p className='value'>
-                                    ${userData.payrate} per hour
-                                </p>
-                            </div>
+							<div className='item'>
+								<p className='label'>Pay Rate:</p>
+								<p className='value'>${userData.payrate} per hour</p>
+							</div>
 						</div>
 					</div>
 				) : (
-					<CircularProgress color='secondary' />
+					<div>
+						<h2>Please stand by while data is being loaded...</h2>
+						<CircularProgress color='secondary' />
+					</div>
 				)}
 			</div>
 		</div>

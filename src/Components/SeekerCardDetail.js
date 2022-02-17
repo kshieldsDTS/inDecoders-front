@@ -65,7 +65,10 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 			<div className='detail-wrapper'>
 				<div className='seeker-card-wrapper'>
 					{!seekerData ? (
-						<CircularProgress color='secondary' />
+						<div>
+							<h2>Please stand by while data is being loaded...</h2>
+							<CircularProgress color='secondary' />
+						</div>
 					) : (
 						<div className='seeker-card'>
 							<div className='seeker-detail'>
@@ -113,25 +116,46 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 									</div>
 								) : (
 									<div className='days value-edit'>
-										<p onClick={toggleChange} id='sunday' className={newSeekerData.sunday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='sunday'
+											className={newSeekerData.sunday ? 'green' : 'gray'}>
 											Sun
 										</p>
-										<p onClick={toggleChange}id='monday' className={newSeekerData.monday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='monday'
+											className={newSeekerData.monday ? 'green' : 'gray'}>
 											Mon
 										</p>
-										<p onClick={toggleChange}id='tuesday' className={newSeekerData.tuesday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='tuesday'
+											className={newSeekerData.tuesday ? 'green' : 'gray'}>
 											Tue
 										</p>
-										<p onClick={toggleChange}id='wednesday' className={newSeekerData.wednesday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='wednesday'
+											className={newSeekerData.wednesday ? 'green' : 'gray'}>
 											Wed
 										</p>
-										<p onClick={toggleChange}id='thursday' className={newSeekerData.thursday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='thursday'
+											className={newSeekerData.thursday ? 'green' : 'gray'}>
 											Thu
 										</p>
-										<p onClick={toggleChange}id='friday' className={newSeekerData.friday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='friday'
+											className={newSeekerData.friday ? 'green' : 'gray'}>
 											Fri
 										</p>
-										<p onClick={toggleChange}id='saturday' className={newSeekerData.saturday ? 'green' : 'gray'}>
+										<p
+											onClick={toggleChange}
+											id='saturday'
+											className={newSeekerData.saturday ? 'green' : 'gray'}>
 											Sat
 										</p>
 									</div>
@@ -158,26 +182,41 @@ function SeekerCardDetail({ userInfo, loggedIn }) {
 						userInfo.username === seekerData.owner ? (
 							!editing ? (
 								<div className='single-container'>
-									<button className='dashboard-seeker' onClick={editSeeker}>Edit Seeker</button>
+									<button className='dashboard-seeker' onClick={editSeeker}>
+										Edit Seeker
+									</button>
 								</div>
-								
 							) : (
 								<div className='button-container'>
 									<div className='safe-buttons'>
-										<button className='dashboard-seeker submit-button' onClick={updateSeeker}>
+										<button
+											className='dashboard-seeker submit-button'
+											onClick={updateSeeker}>
 											Update
 										</button>
-										<button className='dashboard-seeker cancel-button' onClick={editSeeker}>Cancel</button>
+										<button
+											className='dashboard-seeker cancel-button'
+											onClick={editSeeker}>
+											Cancel
+										</button>
 									</div>
 									<div className='danger-button'>
-										<button className='dashboard-seeker delete-button' onClick={deleteSeeker}>Delete Seeker</button>
+										<button
+											className='dashboard-seeker delete-button'
+											onClick={deleteSeeker}>
+											Delete Seeker
+										</button>
 									</div>
 								</div>
 							)
 						) : null
 					) : null}
 				</div>
-				{success ? <p className='success'>You have successfully updated your Seeker Card!</p> : null}
+				{success ? (
+					<p className='success'>
+						You have successfully updated your Seeker Card!
+					</p>
+				) : null}
 			</div>
 		);
 }
