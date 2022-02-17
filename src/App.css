@@ -22,6 +22,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 500;
 }
 .header h2 {
 	margin: 20px;
@@ -75,7 +76,6 @@ a {
 	box-shadow: 3px 3px #111;
 	transition: transform 0.2s;
 	transform-origin: top center;
-	z-index: 999;
 }
 .show-menu {
 	transform: scaleY(1);
@@ -157,6 +157,7 @@ a {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	z-index: 6;
 }
 .dashboard {
 	background-color: rgb(53, 50, 78);
@@ -218,6 +219,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	z-index: 6;
 }
 .seeker-card-wrapper p{
 	margin: 0;
@@ -276,6 +278,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: 5;
 }
 .edit {
 	padding: 5px;
@@ -339,6 +342,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: 5;
 }
 /* Project Card */
 .outer-wrapper{
@@ -346,6 +350,7 @@ h1 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	z-index: 5;
 }
 .lfh-board {
 	width: 100vw;
@@ -364,6 +369,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	z-index: 5;
 }
 .project-card-wrapper p{
 	margin: 0;
@@ -382,6 +388,7 @@ h1 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	z-index: 5;
 }
 .user-card-wrapper {
 	width: 90vw;
@@ -392,6 +399,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	z-index: 5;
 }
 .user-card-wrapper p{
 	margin: 0;
@@ -502,14 +510,8 @@ section {
 	overflow-y: auto;
 	overflow-x: hidden;
 	perspective: 10px;
-}
-.title {
-	font-size: 4rem;
-	text-shadow: 0 0 10px rgb(16, 195, 219);
-	color: rgb(255, 126, 219);
-	transform: translateY(-700px)
-}
-.about-header {
+	}
+	.about-header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -518,29 +520,86 @@ section {
 	height: 100%;
 	transform-style: preserve-3d;
 	z-index: -1;
-}
-.background 
-.foreground {
+	}
+	.background 
+	.foreground {
 	position: absolute;
 	height: 100vh;
 	width: 100vw;
 	object-fit: cover;
-
-}
-.background {
+	}
+	.background {
 	transform: translateZ(-10px) scale(2) translateY(250px);
-}
-.foreground {
+	}
+	.foreground {
 	transform: translateZ(-5px) scale(2) translateY(-50px);
-}
-section {
+	}
+	section {
 	font-size: 2rem;
 	padding: 2rem;
 	background-color: rgb(38, 35, 53);
 	text-align: left;
-}
-.about-h {
+	}
+	.about-h {
 	color:rgb(255, 126, 219);
 	text-decoration: underline;
+	}
+	.lfw-board {
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	}
+	.seeker-card-wrapper {
+	width: 30%;
+	background-color: rgb(46, 44, 68);
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 6;
+	}
+	.lfh-board {
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+.project-card-wrapper {
+	width: 30%;
+	background-color: rgb(46, 44, 68);
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 5;
+}
+.outer-user-wrapper {
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	flex-wrap: wrap;
+	z-index: 5;
+}
+.user-card-wrapper {
+	width: 30%;
+	background-color: rgb(46, 44, 68);
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px rgb(255, 126, 219), 1px -1px 5px rgb(255, 126, 219), -1px 1px 5px rgb(255, 126, 219), -1px -1px 5px rgb(255, 126, 219);
+	margin: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 5;
 }
 }
