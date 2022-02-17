@@ -24,7 +24,7 @@ function UserCardDetail({ userInfo, loggedIn }) {
 			<div className='user-card-wrapper'>
 				{userData ? (
 					<div className='user-card'>
-						<div className='user-info'>
+						<div className='user-detail'>
 							<div className='item'>
 								<p className='label'>Username:</p>
 								<p className='value'>{userData.username}</p>
@@ -49,7 +49,7 @@ function UserCardDetail({ userInfo, loggedIn }) {
 							</div>
                             <div className='item'>
                                 <p className='label'>
-                                    Payrate:
+                                    Pay Rate:
                                 </p>
                                 <p className='value'>
                                     ${userData.payrate} per hour

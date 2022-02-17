@@ -46,7 +46,7 @@ function CreateProject({ userInfo }) {
 			<div className='create-wrapper'>
 				<form className='project-card-wrapper'>
 					<div className='project-card'>
-						<div className='project-info'>
+						<div className='project-details'>
 							<div className='item'>
 								<label className='label'>Username:</label>
 								<p className='value'>{userInfo.username}</p>
@@ -131,7 +131,7 @@ function CreateProject({ userInfo }) {
 									onChange={handleChange}/>
 								</div>
 								<div className='item'>
-									<label className='label'>Pay/Hour:</label>
+									<label className='label'>Pay Rate:</label>
 									<input
 										className='edit'
 										type='number'
@@ -148,7 +148,7 @@ function CreateProject({ userInfo }) {
 						Project.
 					</p>
 				) : (
-					<button className='edit submit-button' onClick={postProject}>
+					<button className='dashboard-seeker' onClick={postProject}>
 						Post It
 					</button>
 				)}

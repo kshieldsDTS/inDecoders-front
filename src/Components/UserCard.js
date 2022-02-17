@@ -6,7 +6,7 @@ function UserCard(props) {
 			<div className='user-card-wrapper'>
 				<Link to={`${props.id}`}>
 					<div className='user-card'>
-						<div className='user-info'>
+						<div className='user-detail'>
 							<div className='item'>
 								<p className='label'>Username:</p>
 								<p className='value'>{props.name}</p>
@@ -22,7 +22,7 @@ function UserCard(props) {
 								<p className='value'>{props.skills}</p>
 							</div>
                             <div className='item'>
-                                <p className='label'>Payrate:</p>
+                                <p className='label'>Pay Rate:</p>
                                 <p className='value'>${props.payrate} per hour</p>
                             </div>
 						</div>

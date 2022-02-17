@@ -6,7 +6,7 @@ function SeekerCard(props) {
 		<div className='seeker-card-wrapper'>
 			<Link to={`/LFW/${props.id}`}>
 				<div className='seeker-card'>
-					<div className='seeker-info'>
+					<div className='seeker-detail'>
 						<div className='item'>
 							<p className='label'>Name:</p>
 							<p className='value'>{props.name}</p>
@@ -34,7 +34,7 @@ function SeekerCard(props) {
 							</div>
 						</div>	
 						<div className='item'>
-							<p className='label'>Payrate: </p>
+							<p className='label'>Pay Rate: </p>
 							<p className='value'>${props.payrate} per hour</p>
 						</div>
 					</div>

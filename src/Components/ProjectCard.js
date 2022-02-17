@@ -44,7 +44,7 @@ function ProjectCard(props) {
 								<p className='value'>{props.contact}</p>
 							</div>
 							<div className='item'>
-								<p className='label'>Payrate:</p>
+								<p className='label'>Pay Rate:</p>
 								<p className='value'>${props.payrate} per hour</p>
 							</div>
 								
