@@ -415,6 +415,7 @@ h1 {
 .error {
 	color: red;
 }
+/* About Styling */
 .about-wrapper {
 	margin: 0;
 	height: 100vh;
@@ -425,7 +426,7 @@ h1 {
 .title {
 	text-shadow: 0 0 10px rgb(255, 126, 219);
 	color: white;
-	transform: translateY(-800px)
+	transform: translateY(-1000px)
 }
 .about-header {
 	position: relative;
@@ -446,15 +447,16 @@ h1 {
 
 }
 .background {
-	transform: translateZ(-10px) scale(2) translateY(250px);
+	transform: translateZ(-10px) scale(2) translateY(0px);
 }
 .foreground {
-	transform: translateZ(-5px) scale(2) translateY(-50px);
+	transform: translateZ(-5px) scale(2) translateY(-275px);
 }
 section {
 	padding: 1.5rem;
 	background-color: rgb(38, 35, 53);
 	text-align: left;
+	transform: translateY(-400px)
 }
 .about-h {
 	color:rgb(255, 126, 219);
@@ -601,5 +603,31 @@ section {
 	flex-direction: column;
 	justify-content: center;
 	z-index: 5;
+}
+.title {
+	text-shadow: 0 0 10px rgb(255, 126, 219);
+	color: white;
+	transform: translateY(-1200px)
+}
+.background 
+.foreground {
+	position: absolute;
+	height: 50%;
+	width: 50%;
+	object-fit: cover;
+
+}
+.background {
+	transform: translateZ(-10px) scale(2) translateY(0px);
+}
+.foreground {
+	transform: translateZ(-5px) scale(2) translateY(-275px);
+}
+section {
+	padding: 1.5rem;
+	background-color: rgb(38, 35, 53);
+	text-align: left;
+	transform: translateY(-400px);
+	font-size: 1.45em;
 }
 }
