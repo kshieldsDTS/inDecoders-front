@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../Assets/indecoders-logo.png'
 
 function Nav({ loggedIn, handleLogout, userInfo }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -10,7 +11,7 @@ function Nav({ loggedIn, handleLogout, userInfo }) {
 			<div className='nav-wrapper'>
 				<div className='header'>
 					<Link to='/'>
-						<h2>inDecoders</h2>
+						<img className='logo' src={logo} alt='inDecoders logo'></img>
 					</Link>
 				</div>
 				<div className='menu-wrapper'>

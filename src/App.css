@@ -17,6 +17,10 @@ a {
 	text-decoration: none;
 }
 /* Nav Bar Styling */
+.logo {
+	height: 50px;
+	margin-left: 10px;
+}
 .nav-wrapper {
 	background-color:  rgb(23, 21, 32);
 	display: flex;
