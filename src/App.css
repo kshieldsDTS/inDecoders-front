@@ -423,8 +423,8 @@ h1 {
 	perspective: 10px;
 }
 .title {
-	text-shadow: 0 0 10px rgb(16, 195, 219);
-	color: rgb(255, 126, 219);
+	text-shadow: 0 0 10px rgb(255, 126, 219);
+	color: white;
 	transform: translateY(-800px)
 }
 .about-header {
